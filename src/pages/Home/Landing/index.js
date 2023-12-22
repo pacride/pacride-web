@@ -1,8 +1,11 @@
+import CarScroll from "../../../components/Scroll/CarScroll"
 import "./Landing.css"
 
 const Landing = () => {
   return (
-    <div className="landing">Landing</div>
+    <div className="landing">
+      <CarScroll />
+    </div>
   )
 }
 
