@@ -1,0 +1,10 @@
+.combobox {
+  width: 100%;
+}
+
+.places__auto__complete .custom__input {
+  background-color: #f2f2f2;
+  height: 3rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+}

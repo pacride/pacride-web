@@ -2,7 +2,9 @@
   /* COLORS */
   /* light blue */
   --primary-color: #00bfff;
-  --secondary-color: #00bfff;
+  --secondary-color: #ff1493;
+  /* dark primary */
+  --primary-color-dark: #00008b;
   --inactive-color: #d3d3d3;
   --success-color: #00ff00;
   --error-color: #ff0000;
