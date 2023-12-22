@@ -1,3 +1,5 @@
 .landing {
     height: 600vh;
+    display: flex;
+    flex-direction: column;
 }

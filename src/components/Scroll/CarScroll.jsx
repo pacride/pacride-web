@@ -33,6 +33,7 @@ const CarScroll = () => {
       </div>
       <div className="road__line" />
       <div className="road road__right">
+        <div className="copyright__overlay" style={{ width: `calc(100% - ${scroll}px)` }} />
         <small className="copyright">
           Pacride © 2021. All rights reserved.
         </small>
