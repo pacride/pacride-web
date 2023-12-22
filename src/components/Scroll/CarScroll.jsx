@@ -11,9 +11,7 @@ const CarScroll = () => {
       const totalScroll = document.body.scrollHeight - window.innerHeight;
       let newScroll = window.scrollY;
       const roadWidth = roadRef.current.clientWidth - 60;
-      console.log({ newScroll, totalScroll });
       const relativeScroll = (newScroll / totalScroll) * roadWidth;
-      console.log({ relativeScroll });
       setScroll(relativeScroll);
       if (relativeScroll < 0) setScroll(0);
     };

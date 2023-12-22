@@ -66,3 +66,7 @@
     background-color: black;
     z-index: 1;
 }
+
+.copyright {
+    white-space: nowrap;
+}
