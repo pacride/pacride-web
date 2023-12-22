@@ -1,3 +1,19 @@
+:root {
+  /* COLORS */
+  /* light blue */
+  --primary-color: #00bfff;
+  --secondary-color: #00bfff;
+  --inactive-color: #d3d3d3;
+  --success-color: #00ff00;
+  --error-color: #ff0000;
+  --warning-color: #ffff00;
+  --info-color: #00bfff;
+
+  /* STYLES */
+  --border-radius: 5px;
+  --box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
