@@ -3,7 +3,7 @@ import "./HomeNav.css";
 
 const HomeNav = () => {
   return (
-    <div  className="home__nav">
+    <div className="home__nav">
       <Link to={"/"} className="home__nav__item home__nav__logo__container">
         <span>Pacride</span>
       </Link>
@@ -16,14 +16,14 @@ const HomeNav = () => {
       <NavLink to={"/contact"} className="home__nav__item">
         <span>Contact</span>
       </NavLink>
-      <NavLink to={"/login"} className="home__nav__item">
+      <NavLink to={"/login"} className="home__nav__item home__nav__login">
         <span>Login</span>
       </NavLink>
       <NavLink to={"/signup"} className="home__nav__item home__nav__signup">
         <span>Create an account</span>
       </NavLink>
     </div>
-  )
+  );
 }
 
 export default HomeNav

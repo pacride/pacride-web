@@ -45,3 +45,39 @@
     background-color: var(--secondary-color);
     color: white;
 }
+
+@media (max-width: 740px) {
+    .home__nav {
+        height: 60px;
+    }
+    .home__nav__item:not(.home__nav__logo__container) {
+        padding: 4px 8px;
+    }
+    .home__nav__logo__container span {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    /* hide some stuff */
+    .home__nav__item:not(.home__nav__logo__container):not(.home__nav__signup):not(.home__nav__login) {
+        display: none;
+    }
+
+    .home__nav__login {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .home__nav__item.active {
+        background-color: transparent;
+        color: black;
+        border: 1px solid var(--primary-color);
+    }
+}
+
+@media (max-width: 360px) {
+    .home__nav__login {
+        display: none;
+    }
+}
