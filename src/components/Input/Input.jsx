@@ -9,14 +9,19 @@ const Input = ({
   LeftIcon,
   RightIcon,
   className = "",
+  leftIconOptions,
+  rightIconOptions,
   ...props
 }) => {
   return (
-    <div className={`custom__input__wrapper ${className}`} {...props}>
+    <div className={`custom__input__wrapper ${className}`}>
       {label && <label>{label}</label>}
       <div className="custom__input__conatainer">
         {LeftIcon && (
-          <LeftIcon className="custom__input__icon custom__input__icon--left" />
+          <LeftIcon
+            className="custom__input__icon custom__input__icon--left"
+            {...leftIconOptions}
+          />
         )}
         <input
           className="custom__input"
@@ -24,9 +29,13 @@ const Input = ({
           placeholder={placeholder}
           value={value}
           onChange={(e) => setValue && setValue(e.target.value)}
+          {...props}
         />
         {RightIcon && (
-          <RightIcon className="custom__input__icon custom__input__icon--right" />
+          <RightIcon
+            className="custom__input__icon custom__input__icon--right"
+            {...rightIconOptions}
+          />
         )}
       </div>
     </div>
