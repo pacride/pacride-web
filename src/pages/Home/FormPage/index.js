@@ -42,7 +42,7 @@ const FormPage = () => {
           </p>
         ) : (
           <p>
-            Transform every mile into a timeless memory, amplify Your adventure,
+            Transform every mile into a timeless memory, amplify your adventure,
             and share the bounty of the journey - because epic rides Are meant
             to Be shared in grand style!
           </p>
