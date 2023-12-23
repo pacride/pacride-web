@@ -11,8 +11,32 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (!username || !password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${process.env.REACT_APP_SERVER}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Login Successful");
+      }
+    } catch (error) {}
   };
 
   return (
@@ -25,17 +49,14 @@ const Login = () => {
         LeftIcon={MdAlternateEmail}
         name="username"
         value={username}
-        setValue={setUsername
-        }
+        setValue={setUsername}
       />
       <Input
         type={showPassword ? "text" : "password"}
         label={"Password"}
         placeholder="********"
         LeftIcon={MdOutlinePassword}
-        RightIcon={
-          showPassword ? FaEyeSlash : FaEye
-        }
+        RightIcon={showPassword ? FaEyeSlash : FaEye}
         rightIconOptions={{
           onClick: () => setShowPassword(!showPassword),
           className: "formpage__show-password",

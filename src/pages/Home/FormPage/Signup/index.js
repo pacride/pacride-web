@@ -62,16 +62,58 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassowrd] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+
+    console.log({ firstname, lastname, email, username, password, confirmPassword });
+    if (
+      !firstname ||
+      !lastname ||
+      !email ||
+      !username ||
+      !password ||
+      !confirmPassword
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${process.env.REACT_APP_SERVER}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          username,
+          password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Signup Successful");
+      }
+    } catch (error) {}
   };
 
   return (
@@ -82,18 +124,18 @@ const Signup = () => {
         label={"First Name"}
         placeholder="Pac"
         LeftIcon={FaUser}
-        name="firstName"
-        value={firstName}
-        setValue={setFirstName}
+        name="firstname"
+        value={firstname}
+        setValue={setFirstname}
       />
       <Input
         type="text"
         label={"Last Name"}
         placeholder="Ride"
         LeftIcon={FaUser}
-        name="lastName"
-        value={lastName}
-        setValue={setLastName}
+        name="lastname"
+        value={lastname}
+        setValue={setLastname}
       />
       <Input
         type="email"
