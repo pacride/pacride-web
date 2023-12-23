@@ -41,6 +41,14 @@
     align-items: center;
 }
 
+.from__input .custom__input:focus ~ .custom__input__icon {
+  color: var(--secondary-color);
+}
+
+.to__input .custom__input:focus ~ .custom__input__icon {
+  color: var(--primary-color);
+}
+
 .landing__title__image__container {
     flex: 0.5;
     position: relative;

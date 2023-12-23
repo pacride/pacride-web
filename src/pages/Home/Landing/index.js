@@ -19,8 +19,7 @@ const Landing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-  }
+  };
 
   return (
     <div className="landing">
@@ -33,12 +32,14 @@ const Landing = () => {
             {isLoaded && (
               <>
                 <PlacesAutocomplete
+                  className="from__input"
                   type={"text"}
                   placeholder={"Enter your location"}
                   LeftIcon={FaLocationCrosshairs}
                   setValue={setFrom}
                 />
                 <PlacesAutocomplete
+                  className="to__input"
                   type={"text"}
                   placeholder={"Enter your destination"}
                   LeftIcon={FaLocationDot}
