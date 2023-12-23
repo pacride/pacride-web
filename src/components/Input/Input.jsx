@@ -14,7 +14,7 @@ const Input = ({
   return (
     <div className={`custom__input__wrapper ${className}`} {...props}>
       {label && <label>{label}</label>}
-      <div className="custom__input__conatiner">
+      <div className="custom__input__conatainer">
         {LeftIcon && (
           <LeftIcon className="custom__input__icon custom__input__icon--left" />
         )}

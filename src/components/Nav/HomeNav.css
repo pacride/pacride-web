@@ -10,4 +10,33 @@
     align-items: center;
     padding-inline: 16px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    gap: 16px;
+}
+
+.home__nav__item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: black;
+    transition: all 0.2s ease-in-out;
+}
+
+.home__nav__item:not(.home__nav__logo__container) {
+    padding: 8px 16px;
+}
+
+.home__nav__item.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+}
+
+.home__nav__logo__container {
+    margin-right: auto;
+}
+
+.home__nav__logo__container span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
 }
