@@ -19,7 +19,7 @@ const HomeNav = () => {
       <NavLink to={"/login"} className="home__nav__item">
         <span>Login</span>
       </NavLink>
-      <NavLink to={"/signup"} className="home__nav__item">
+      <NavLink to={"/signup"} className="home__nav__item home__nav__signup">
         <span>Create an account</span>
       </NavLink>
     </div>
