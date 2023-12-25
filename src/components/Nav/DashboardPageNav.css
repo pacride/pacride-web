@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    padding-left: 4rem;
     border-bottom: 1px solid #333;
     position: sticky;
     top: 0;
@@ -220,7 +221,7 @@
     color: #000;
 }
 
-@media (max-width: 954px) {
+@media (max-width: 768px) {
     .dashboard__header {
         flex-direction: column-reverse;
     }
@@ -239,10 +240,6 @@
     }
 
     .dashboard__search__input {
-        width: 100%;
-    }
-
-    .dashboard__search__filter {
         width: 100%;
     }
 }

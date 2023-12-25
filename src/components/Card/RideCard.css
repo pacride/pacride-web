@@ -169,14 +169,6 @@
 }
 
 @media (max-width: 768px) {
-  .ride__card {
-    height: auto;
-  }
-
-  .ride__card__image {
-    height: 200px;
-  }
-
   .ride__card__details {
     padding: 0.5rem;
   }
@@ -200,15 +192,13 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 648px) {
   .ride__card {
-    height: auto;
+    max-width: unset;
   }
+}
 
-  .ride__card__image {
-    height: 200px;
-  }
-
+@media (max-width: 550px) {
   .ride__card__details {
     padding: 0.5rem;
   }
@@ -227,15 +217,13 @@
   }
 }
 
-@media (max-width: 320px) {
-  .ride__card {
-    height: auto;
-  }
-
+@media (max-width: 425px) {
   .ride__card__image {
-    height: 200px;
+    height: 150px;
   }
+}
 
+@media (max-width: 320px) {
   .ride__card__details {
     padding: 0.5rem;
   }
