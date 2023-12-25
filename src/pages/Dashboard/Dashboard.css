@@ -1,3 +1,17 @@
 .dashboard {
-    
+  display: flex;
+}
+
+.dashboard__container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dashboard__rides {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
 }

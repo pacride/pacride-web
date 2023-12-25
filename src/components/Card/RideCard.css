@@ -1,0 +1,260 @@
+.ride__card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  max-width: 400px;
+}
+
+.ride__card:hover {
+  transform: scale(1.02);
+}
+
+.ride__card__image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.ride__card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ride__card__details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+
+.ride__card__details__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.ride__card__details__header__item {
+  display: flex;
+  align-items: center;
+}
+
+.ride__card__details__header__from {
+  display: flex;
+  align-items: center;
+}
+
+.ride__card__details__header__to {
+  display: flex;
+  align-items: center;
+}
+
+.ride__card__details__header h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.ride__card__details__header__icon {
+  font-size: 1.5rem;
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+.ride__card__details__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin-top: 1rem;
+}
+
+.ride__card__details__body__car {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ride__card__details__body__car h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.ride__card__details__body__seats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ride__card__details__body__seats h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.ride__card__details__body__price {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ride__card__details__body__price h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.ride__card__details__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  gap: 1rem;
+}
+
+.ride__card__details__footer__date {
+  display: flex;
+  align-items: center;
+}
+
+.ride__card__details__footer__date h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.ride__card__details__footer__time {
+  display: flex;
+  align-items: center;
+}
+
+.ride__card__details__footer__time h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.ride__card__details__footer__button {
+  display: flex;
+  align-items: center;
+}
+
+.ride__card__details__footer__button button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ride__card__details__footer__button button:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+@media (max-width: 768px) {
+  .ride__card {
+    height: auto;
+  }
+
+  .ride__card__image {
+    height: 200px;
+  }
+
+  .ride__card__details {
+    padding: 0.5rem;
+  }
+
+  .ride__card__details__header {
+    margin-bottom: 0.5rem;
+  }
+
+  .ride__card h4,
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  .ride__card__details__header__icon {
+    font-size: 1rem;
+  }
+
+  .ride__card__details__footer__button button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .ride__card {
+    height: auto;
+  }
+
+  .ride__card__image {
+    height: 200px;
+  }
+
+  .ride__card__details {
+    padding: 0.5rem;
+  }
+
+  .ride__card__details__header {
+    margin-bottom: 0.5rem;
+  }
+
+  .ride__card h4,
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  .ride__card__details__header__icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .ride__card {
+    height: auto;
+  }
+
+  .ride__card__image {
+    height: 200px;
+  }
+
+  .ride__card__details {
+    padding: 0.5rem;
+  }
+
+  .ride__card__details__header {
+    margin-bottom: 0.5rem;
+  }
+
+  .ride__card__details__header__icon {
+    font-size: 1rem;
+  }
+
+  .ride__card h4,
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  .ride__card__details__footer__button button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
