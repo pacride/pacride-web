@@ -1,57 +1,3 @@
-/**
-import "./Login.css";
-import Button from "../../../../components/Button/Button";
-import Input from "../../../../components/Input/Input";
-import { MdAlternateEmail, MdOutlinePassword } from "react-icons/md";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
-
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-  };
-
-  return (
-    <form className="login__form" onSubmit={handleLogin}>
-      <h2>Login</h2>
-      <Input
-        type="text"
-        label={"E-mail / Username"}
-        placeholder="pacride"
-        LeftIcon={MdAlternateEmail}
-        name="username"
-        value={username}
-        setValue={setUsername
-        }
-      />
-      <Input
-        type={showPassword ? "text" : "password"}
-        label={"Password"}
-        placeholder="********"
-        LeftIcon={MdOutlinePassword}
-        RightIcon={
-          showPassword ? FaEyeSlash : FaEye
-        }
-        rightIconOptions={{
-          onClick: () => setShowPassword(!showPassword),
-          className: "formpage__show-password",
-        }}
-        name="password"
-        value={password}
-        setValue={setPassword}
-      />
-      <Button type="submit">Login</Button>
-    </form>
-  );
-};
-
-export default Login;
- */
-
 import "./Signup.css";
 import { useState } from "react";
 import Input from "../../../../components/Input/Input";
@@ -59,7 +5,8 @@ import Button from "../../../../components/Button/Button";
 import { FaUser } from "react-icons/fa";
 import { MdEmail, MdAlternateEmail, MdOutlinePassword } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [firstname, setFirstname] = useState("");
@@ -69,11 +16,19 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassowrd] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    console.log({ firstname, lastname, email, username, password, confirmPassword });
+    console.log({
+      firstname,
+      lastname,
+      email,
+      username,
+      password,
+      confirmPassword,
+    });
     if (
       !firstname ||
       !lastname ||
@@ -82,12 +37,22 @@ const Signup = () => {
       !password ||
       !confirmPassword
     ) {
-      alert("Please fill in all fields");
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    if (!/^[a-zA-Z]+$/.test(firstname) || !/^[a-zA-Z]+$/.test(lastname)) {
+      toast.error("First name and last name must contain only letters");
+      return;
+    }
+
+    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+      toast.error("Username must contain only letters and numbers");
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
 
@@ -109,11 +74,19 @@ const Signup = () => {
       const data = await res.json();
 
       if (data.error) {
-        alert(data.error);
-      } else {
-        alert("Signup Successful");
+        toast.error(data.error);
+        return;
       }
-    } catch (error) {}
+
+      toast.success(data.message);
+      navigate("/login");
+    } catch (error) {
+      if (/failed to fetch|network *error/i.test(error.message)) {
+        toast.error("Please check your internet connection");
+        return;
+      }
+      toast.error("Something went wrong");
+    }
   };
 
   return (
@@ -127,6 +100,7 @@ const Signup = () => {
         name="firstname"
         value={firstname}
         setValue={setFirstname}
+        required
       />
       <Input
         type="text"
@@ -136,6 +110,7 @@ const Signup = () => {
         name="lastname"
         value={lastname}
         setValue={setLastname}
+        required
       />
       <Input
         type="email"
@@ -145,6 +120,7 @@ const Signup = () => {
         name="email"
         value={email}
         setValue={setEmail}
+        required
       />
       <Input
         type="text"
@@ -154,6 +130,8 @@ const Signup = () => {
         name="username"
         value={username}
         setValue={setUsername}
+        autoComplete="off"
+        required
       />
       <Input
         type={showPassword ? "text" : "password"}
@@ -168,6 +146,8 @@ const Signup = () => {
         name="password"
         value={password}
         setValue={setPassword}
+        minLength={8}
+        required
       />
       <Input
         type={showPassword ? "text" : "password"}
@@ -177,6 +157,7 @@ const Signup = () => {
         name="confirmPassword"
         value={confirmPassword}
         setValue={setConfirmPassowrd}
+        required
       />
       <small>
         By clicking the "Signup" button below, you agree to our{" "}

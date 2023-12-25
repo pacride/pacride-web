@@ -6,6 +6,7 @@ import { useState } from "react";
 import Button from "../../../components/Button/Button";
 import PlacesAutocomplete from "../../../components/Input/PlacesAutoComplete";
 import peopleSharingRide from "../../../assets/images/people_sharing_ride.jpeg";
+import Input from "../../../components/Input/Input";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
@@ -29,7 +30,7 @@ const Landing = () => {
             Share your fare with <span>Pacride</span>
           </h1>
           <form onSubmit={handleSubmit}>
-            {isLoaded && (
+            {isLoaded ? (
               <>
                 <PlacesAutocomplete
                   className="from__input"
@@ -44,6 +45,27 @@ const Landing = () => {
                   placeholder={"Enter your destination"}
                   LeftIcon={FaLocationDot}
                   setValue={setTo}
+                />
+              </>
+            ) : (
+              <>
+                <Input
+                  className="from__input"
+                  type={"text"}
+                  placeholder={"Enter your location"}
+                  LeftIcon={FaLocationCrosshairs}
+                  setValue={setFrom}
+                  value={from}
+                  disabled
+                />
+                <Input
+                  className="to__input"
+                  type={"text"}
+                  placeholder={"Enter your destination"}
+                  LeftIcon={FaLocationDot}
+                  setValue={setTo}
+                  value={to}
+                  disabled
                 />
               </>
             )}

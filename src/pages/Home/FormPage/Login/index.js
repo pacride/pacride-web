@@ -4,18 +4,20 @@ import Input from "../../../../components/Input/Input";
 import { MdAlternateEmail, MdOutlinePassword } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
-      alert("Please fill in all fields");
+      toast.error("Username and password are required");
       return;
     }
 
@@ -29,14 +31,22 @@ const Login = () => {
       });
 
       const data = await res.json();
-      console.log(data);
 
       if (data.error) {
-        alert(data.error);
-      } else {
-        alert("Login Successful");
+        toast.error(data.message);
+        return;
       }
-    } catch (error) {}
+
+      toast.success("Logged in successfully");
+      localStorage.setItem("token", data.data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      if (/failed to fetch|network *error/i.test(error.message)) {
+        toast.error("Please check your internet connection");
+        return;
+      }
+      toast.error("Something went wrong");
+    }
   };
 
   return (

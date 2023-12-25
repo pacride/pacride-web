@@ -7,10 +7,24 @@ import Login from "./pages/Home/FormPage/Login";
 import Signup from "./pages/Home/FormPage/Signup";
 import Error from "./pages/Error";
 import Dashboard from "./pages/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Router>
         <Routes>
           <Route path="/" element={<Home />}>
@@ -22,9 +36,7 @@ function App() {
               <Route path="login" element={<Login />} />
             </Route>
           </Route>
-          <Route path="/dashboard" element={<Dashboard />}>
-            
-          </Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
