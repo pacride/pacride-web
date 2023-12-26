@@ -10,7 +10,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-const PlacesAutoComplete = ({ placeholder, setValue: setV, LeftIcon, className = "" }) => {
+const PlacesAutoComplete = ({ placeholder, setValue: setV, LeftIcon, className = "", label }) => {
   const {
     ready,
     value,
@@ -29,7 +29,10 @@ const PlacesAutoComplete = ({ placeholder, setValue: setV, LeftIcon, className =
   };
 
   return (
-    <div className={`custom__input__wrapper places__auto__complete ${className}`}>
+    <div
+      className={`custom__input__wrapper places__auto__complete ${className}`}
+    >
+      {label && <label>{label}</label>}
       <Combobox onSelect={handleSelect} aria-labelledby="demo">
         <div className="custom__input__container">
           <ComboboxInput

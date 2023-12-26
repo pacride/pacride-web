@@ -27,7 +27,6 @@
 .dashboard__nav {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   background-color: #fff;
   height: 100vh;
@@ -41,6 +40,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   transform: translateX(-100%);
+  gap: 1rem;
 }
 
 .dashboard__nav.active {

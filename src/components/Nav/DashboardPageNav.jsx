@@ -1,25 +1,12 @@
-import { useEffect, useState } from "react";
 import "./DashboardPageNav.css";
-import { FaChevronDown, FaPlus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import Select from "../Select/Select";
 
-const DashboardPageNav = ({ filter, setFilter }) => {
-  const [selectOpen, setSelectOpen] = useState(false);
+const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
 
-  useEffect(() => {
-    const closeSelect = () => {
-      setSelectOpen(false);
-    };
-    document.addEventListener("click", (e) => {
-      if (e.target.closest(".dashboard__search__filter__select")) return;
-      closeSelect();
-    });
-    return () => document.removeEventListener("click", closeSelect);
-  }, []);
-
-  useEffect(() => {
-    setSelectOpen(false);
-  }, [filter]);
+  const navigate = useNavigate();
 
   return (
     <div className="dashboard__header">
@@ -30,24 +17,7 @@ const DashboardPageNav = ({ filter, setFilter }) => {
             <IoSearchOutline />
           </button>
         </div>
-        <div className="dashboard__search__filter">
-          <div className="dashboard__search__filter__select">
-            <div
-              className="dashboard__search__filter__select__title"
-              onClick={() => setSelectOpen(!selectOpen)}
-            >
-              <span>{filter}</span>
-              <FaChevronDown className="dashboard__search__filter__select__title__icon" />
-            </div>
-            {selectOpen && (
-              <div className="dashboard__search__filter__select__options">
-                <span onClick={() => setFilter("Departure")}>Departure</span>
-                <span onClick={() => setFilter("Arrival")}>Arrival</span>
-                <span onClick={() => setFilter("Price")}>Price</span>
-              </div>
-            )}
-          </div>
-        </div>
+        <Select value={filter} setValue={setFilter} options={filterOptions} />
       </div>
       <div className="dashboard__header__title__container">
         <div className="dashboard__header__title">
@@ -55,7 +25,7 @@ const DashboardPageNav = ({ filter, setFilter }) => {
           <span>Hello, John</span>
         </div>
         <div className="dashboard__header__button">
-          <button>
+          <button onClick={() => navigate("/dashboard/rides/new")}>
             List a ride
             <FaPlus />
           </button>
@@ -63,6 +33,6 @@ const DashboardPageNav = ({ filter, setFilter }) => {
       </div>
     </div>
   );
-}
+};
 
-export default DashboardPageNav
+export default DashboardPageNav;

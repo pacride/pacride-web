@@ -1,3 +1,4 @@
+import { currencyOptions } from "../../data/currency";
 import Button from "../Button/Button";
 import "./RideCard.css";
 import { FaLocationCrosshairs, FaLocationDot } from "react-icons/fa6";
@@ -7,11 +8,13 @@ const RideCard = ({
   to,
   carName,
   seatsAvailable,
+  currency,
   price,
   departureDate,
   departureTime,
   image,
 }) => {
+
   return (
     <div className="card ride__card">
       {image && (
@@ -38,7 +41,10 @@ const RideCard = ({
             <h5>{seatsAvailable} seats available</h5>
           </div>
           <div className="ride__card__details__body__price">
-            <h5>₹{price}</h5>
+            <h5>
+              {currencyOptions.filter((option) => option.value === currency)?.[0]?.value || []}
+              {price}
+            </h5>
           </div>
         </div>
         <div className="ride__card__details__footer">

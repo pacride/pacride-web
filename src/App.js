@@ -9,6 +9,9 @@ import Error from "./pages/Error";
 import Dashboard from "./pages/Dashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DashboardIndex from "./pages/Dashboard/DashboardIndex";
+import NewRide from "./pages/Dashboard/NewRide";
+import Profile from "./pages/Dashboard/Profile";
 
 function App() {
   return (
@@ -36,7 +39,11 @@ function App() {
               <Route path="login" element={<Login />} />
             </Route>
           </Route>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<DashboardIndex />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="rides/new" element={<NewRide />} />
+          </Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

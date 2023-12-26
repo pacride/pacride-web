@@ -1,10 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./DashboardNav.css";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const DashboardNav = () => {
   const [toggle, setToggle] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        !e.target.closest(".dashboard__nav") &&
+        !e.target.closest(".dashboard__nav__toggle")
+      ) {
+        setToggle(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    setToggle(false);
+  }, [location])
 
   return (
     <>
@@ -25,18 +44,12 @@ const DashboardNav = () => {
         <NavLink to="" end className="dashboard__nav__item">
           Dashboard
         </NavLink>
-        <NavLink to="my-listings" className="dashboard__nav__item">
-          My Listings
+        <NavLink to="profile" className="dashboard__nav__item">
+          Profile
         </NavLink>
-        <NavLink to="rides" className="dashboard__nav__item">
-          Rides
-        </NavLink>
-        <NavLink to="messages" className="dashboard__nav__item">
-          Messages
-        </NavLink>
-        <NavLink to="settings" className="dashboard__nav__item">
-          Settings
-        </NavLink>
+        <Link to="/login" className="dashboard__nav__item" onClick={() => localStorage.clear()}>
+          Log out
+        </Link>
       </div>
     </>
   );
