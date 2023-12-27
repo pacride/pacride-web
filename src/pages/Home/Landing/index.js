@@ -8,12 +8,12 @@ import {
   FaLocationDot,
   FaTwitter,
 } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../../../components/Button/Button";
 import PlacesAutocomplete from "../../../components/Input/PlacesAutoComplete";
 import peopleSharingRide from "../../../assets/images/people_sharing_ride.jpeg";
 import Input from "../../../components/Input/Input";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
@@ -23,10 +23,21 @@ const Landing = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const location = useLocation().pathname;
+  const aboutSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: MAPS_API_KEY,
     libraries: ["places"],
   });
+
+  useEffect(() => {
+    if (/\/about/.test(location))
+      aboutSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    else if (/\/contact/.test(location))
+      contactSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    else window.scrollTo(0, 0);
+  }, [location])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,7 +79,7 @@ const Landing = () => {
           />
         </div>
       </section>
-      <section className="landing__about__section">
+      <section className="landing__about__section" ref={aboutSectionRef}>
         <div className="landing__about__container">
           <h2 className="landing__about__title">About Pacride</h2>
           <p className="landing__about__text">
@@ -103,7 +114,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      <section className="landing__contact__section">
+      <section className="landing__contact__section" ref={contactSectionRef}>
         <div className="landing__contact__container">
           <h2 className="landing__contact__title">Contact us</h2>
           <form className="landing__contact__form">
