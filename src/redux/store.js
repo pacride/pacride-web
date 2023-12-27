@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  user: {},
+  rides: [],
+};
 
 const reducerFtn = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -8,6 +11,12 @@ const reducerFtn = (state = initialState, action = {}) => {
       return {
         ...state,
         user: action.payload,
+      };
+
+    case "SET_RIDES":
+      return {
+        ...state,
+        rides: action.payload,
       };
     
     default:

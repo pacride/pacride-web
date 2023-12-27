@@ -66,8 +66,16 @@
 
 .ride__card__details__header__icon {
   font-size: 1.5rem;
+  min-width: 1.5rem;
   color: #333;
+}
+
+.ride__card__details__header__from__icon {
   margin-right: 0.5rem;
+}
+
+.ride__card__details__header__to__icon {
+  margin-left: 0.5rem;
 }
 
 .ride__card__details__body {
@@ -78,40 +86,23 @@
   margin-top: 1rem;
 }
 
-.ride__card__details__body__car {
+.ride__card__details__body > div {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
 }
 
-.ride__card__details__body__car h5 {
+.ride__card__details__body > div h5 {
   font-size: 1rem;
   font-weight: 500;
   color: #000;
 }
 
-.ride__card__details__body__seats {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.ride__card__details__body__seats h5 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #000;
-}
-
-.ride__card__details__body__price {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.ride__card__details__body__price h5 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #000;
+.ride__card__details__body__icon {
+  font-size: 1.5rem;
+  min-width: 1.5rem;
+  color: #333;
+  margin-right: 0.5rem;
 }
 
 .ride__card__details__footer {
@@ -182,7 +173,8 @@
     font-size: 0.8rem;
   }
 
-  .ride__card__details__header__icon {
+  .ride__card__details__header__icon,
+  .ride__card__details__body__icon {
     font-size: 1rem;
   }
 
@@ -211,10 +203,6 @@
   h5 {
     font-size: 0.8rem;
   }
-
-  .ride__card__details__header__icon {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 425px) {
@@ -230,10 +218,6 @@
 
   .ride__card__details__header {
     margin-bottom: 0.5rem;
-  }
-
-  .ride__card__details__header__icon {
-    font-size: 1rem;
   }
 
   .ride__card h4,

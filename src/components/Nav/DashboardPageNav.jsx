@@ -3,10 +3,11 @@ import { FaPlus } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import Select from "../Select/Select";
+import { useSelector } from "react-redux";
 
 const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
-
   const navigate = useNavigate();
+  const userData = useSelector((state) => state.user);
 
   return (
     <div className="dashboard__header">
@@ -22,7 +23,7 @@ const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
       <div className="dashboard__header__title__container">
         <div className="dashboard__header__title">
           <h1>Dashboard</h1>
-          <span>Hello, John</span>
+          <span>Hello, {userData.username}</span>
         </div>
         <div className="dashboard__header__button">
           <button onClick={() => navigate("/dashboard/rides/new")}>

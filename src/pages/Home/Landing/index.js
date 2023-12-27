@@ -30,45 +30,22 @@ const Landing = () => {
             Share your fare with <span>Pacride</span>
           </h1>
           <form onSubmit={handleSubmit}>
-            {isLoaded ? (
-              <>
-                <PlacesAutocomplete
-                  className="from__input"
-                  type={"text"}
-                  placeholder={"Enter your location"}
-                  LeftIcon={FaLocationCrosshairs}
-                  setValue={setFrom}
-                />
-                <PlacesAutocomplete
-                  className="to__input"
-                  type={"text"}
-                  placeholder={"Enter your destination"}
-                  LeftIcon={FaLocationDot}
-                  setValue={setTo}
-                />
-              </>
-            ) : (
-              <>
-                <Input
-                  className="from__input"
-                  type={"text"}
-                  placeholder={"Enter your location"}
-                  LeftIcon={FaLocationCrosshairs}
-                  setValue={setFrom}
-                  value={from}
-                  disabled
-                />
-                <Input
-                  className="to__input"
-                  type={"text"}
-                  placeholder={"Enter your destination"}
-                  LeftIcon={FaLocationDot}
-                  setValue={setTo}
-                  value={to}
-                  disabled
-                />
-              </>
-            )}
+            <PlacesAutocomplete
+              className="from__input"
+              type={"text"}
+              placeholder={"Enter your location"}
+              LeftIcon={FaLocationCrosshairs}
+              setValue={setFrom}
+              isLoaded={isLoaded}
+            />
+            <PlacesAutocomplete
+              className="to__input"
+              type={"text"}
+              placeholder={"Enter your destination"}
+              LeftIcon={FaLocationDot}
+              setValue={setTo}
+              isLoaded={isLoaded}
+            />
             <Button>See available rides</Button>
           </form>
         </div>

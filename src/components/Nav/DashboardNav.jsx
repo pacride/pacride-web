@@ -1,5 +1,5 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
 import "./DashboardNav.css";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
@@ -50,6 +50,9 @@ const DashboardNav = () => {
         <Link to="/login" className="dashboard__nav__item" onClick={() => localStorage.clear()}>
           Log out
         </Link>
+        <small className="dashboard__nav__footer">
+          © 2024 Pacride
+        </small>
       </div>
     </>
   );

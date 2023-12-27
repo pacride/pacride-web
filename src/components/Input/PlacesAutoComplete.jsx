@@ -9,8 +9,47 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import Input from "./Input";
 
-const PlacesAutoComplete = ({ placeholder, setValue: setV, LeftIcon, className = "", label }) => {
+function PlacesAutoComplete({
+  isLoaded,
+  placeholder,
+  setValue,
+  LeftIcon,
+  className,
+  ...rest
+}) {
+  if (!isLoaded)
+    return (
+      <Input
+        placeholder={placeholder}
+        setValue={setValue}
+        LeftIcon={LeftIcon}
+        className={className}
+        disabled
+        {...rest}
+      />
+    );
+
+  return (
+    <Main
+      placeholder={placeholder}
+      setValue={setValue}
+      LeftIcon={LeftIcon}
+      className={className}
+      {...rest}
+    />
+  );
+}
+
+const Main = ({
+  placeholder,
+  setValue: setV,
+  LeftIcon,
+  className = "",
+  label,
+  ...rest
+}) => {
   const {
     ready,
     value,
@@ -41,6 +80,7 @@ const PlacesAutoComplete = ({ placeholder, setValue: setV, LeftIcon, className =
             onChange={handleInput}
             disabled={!ready}
             placeholder={placeholder}
+            {...rest}
           />
           {LeftIcon && (
             <LeftIcon className="custom__input__icon custom__input__icon--left" />

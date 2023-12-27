@@ -11,17 +11,25 @@ import Input from "../../../components/Input/Input";
 import "./NewRide.css";
 import { useRef, useState } from "react";
 import Select from "../../../components/Select/Select";
-import { currencyOptions } from "../../../data/currency";
 import PlacesAutoComplete from "../../../components/Input/PlacesAutoComplete";
 import { useLoadScript } from "@react-google-maps/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
 const NewRide = () => {
+  const currencyOptions = [
+    { label: "NGN", value: "NGN" },
+    { label: "USD", value: "USD" },
+    { label: "EUR", value: "EUR" },
+    { label: "GBP", value: "GBP" },
+  ];
+  
+  const navigate = useNavigate();
   const [vehicle, setVehicle] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState("NGN");
   const [price, setPrice] = useState("");
   const [availableSeats, setAvailableSeats] = useState("");
   const [pickupDate, setPickupDate] = useState("");
@@ -94,6 +102,7 @@ const NewRide = () => {
     setPickupTime("");
     setImage("");
     setErrorMessage("");
+    navigate("/dashboard");
   };
 
   return (
@@ -110,49 +119,26 @@ const NewRide = () => {
             setValue={setVehicle}
             value={vehicle}
           />
-          {isLoaded ? (
-            <>
-              <PlacesAutoComplete
-                label={"Pickup location"}
-                className="new__ride__input"
-                type={"text"}
-                placeholder={"Enter your pickup location"}
-                LeftIcon={FaLocationArrow}
-                setValue={setFrom}
-                value={from}
-              />
-              <PlacesAutoComplete
-                label={"Destination"}
-                className="new__ride__input"
-                type={"text"}
-                placeholder={"Enter your destination"}
-                LeftIcon={FaLocationDot}
-                setValue={setTo}
-                value={to}
-              />
-            </>
-          ) : (
-            <>
-              <Input
-                label={"Pickup location"}
-                className="new__ride__input"
-                type={"text"}
-                placeholder={"Enter your pickup location"}
-                LeftIcon={FaLocationArrow}
-                setValue={setFrom}
-                value={from}
-              />
-              <Input
-                label={"Destination"}
-                className="new__ride__input"
-                type={"text"}
-                placeholder={"Enter your destination"}
-                LeftIcon={FaLocationDot}
-                setValue={setTo}
-                value={to}
-              />
-            </>
-          )}
+          <PlacesAutoComplete
+            label={"Pickup location"}
+            className="new__ride__input"
+            type={"text"}
+            placeholder={"Enter your pickup location"}
+            LeftIcon={FaLocationArrow}
+            setValue={setFrom}
+            value={from}
+            isLoaded={isLoaded}
+          />
+          <PlacesAutoComplete
+            label={"Destination"}
+            className="new__ride__input"
+            type={"text"}
+            placeholder={"Enter your destination"}
+            LeftIcon={FaLocationDot}
+            setValue={setTo}
+            value={to}
+            isLoaded={isLoaded}
+          />
           <Select
             label={"Currency"}
             className="new__ride__input"

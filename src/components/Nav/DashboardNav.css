@@ -103,3 +103,16 @@
   background-color: var(--primary-color);
   color: #fff;
 }
+
+.dashboard__nav__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #333;
+}
