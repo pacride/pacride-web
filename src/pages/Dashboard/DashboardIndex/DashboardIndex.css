@@ -9,42 +9,6 @@
   grid-gap: 1rem;
 }
 
-/* 
-<div className={`dashboard__location ${openOverlay && "open"}`}>
-<div className="dashboard__location__container">
-<h1 className="dashboard__location__title">Find a ride</h1>
-    <PlacesAutoComplete
-      className="from__input dashboard__location__input"
-      type={"text"}
-      placeholder={"Enter your location"}
-      LeftIcon={FaLocationCrosshairs}
-      setValue={setFrom}
-      isLoaded={isLoaded}
-    />
-    <PlacesAutoComplete
-      className="to__input dashboard__location__input"
-      type={"text"}
-      placeholder={"Enter your destination"}
-      LeftIcon={FaLocationDot}
-      setValue={setTo}
-      isLoaded={isLoaded}
-    />
-    <Button className="dashboard__location__button">See rides</Button>
-  </div>
-  {!openOverlay ? (
-    <IoIosArrowDropdown
-      className="dashboard__location__overlay__icon"
-      onClick={() => setOpenOverlay(false)}
-    />
-  ) : (
-    <IoIosArrowDropup
-      className="dashboard__location__overlay__icon"
-      onClick={() => setOpenOverlay(true)}
-    />
-  )}
-</div>
-*/
-
 .dashboard__location {
   position: sticky;
   bottom: 0;
@@ -103,6 +67,156 @@
   transform: unset;
   position: relative;
   margin: 0;
+}
+
+/* 
+<div className="dashboard__contact">
+          <button
+            className="dashboard__contact__back"
+            onClick={() => navigate(-1)}
+          >
+            <IoIosArrowBack />
+            <span>Back</span>
+          </button>
+          <div className="card dashboard__contact__container">
+            <div className="dashboard__contact__details">
+              {contactDetails.image && (
+                <img
+                  className="dashboard__contact__details__image"
+                  src={contactDetails.image}
+                  alt="contact"
+                />
+              )}
+              <h4 className="dashboard__contact__details__title">
+                Contact details
+              </h4>
+              <div className="dashboard__contact__details__name">
+                <FaUser className="dashboard__contact__icon" />
+                <span>
+                  {contactDetails.firstname} {contactDetails.lastname}
+                </span>
+              </div>
+            </div>
+            <div className="dashboard__contact__phone">
+              <FaPhone className="dashboard__contact__icon" />
+              <span>
+                <Link to={`tel:${contactDetails.phone}`}>
+                  {contactDetails.phone}
+                </Link>
+              </span>
+            </div>
+            <Button className="dashboard__contact__request__button">
+              Request
+            </Button>
+          </div>
+        </div>
+*/
+
+.dashboard__contact {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard__contact__back {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.dashboard__contact__back span {
+  margin-left: 0.5rem;
+}
+
+.dashboard__contact__back svg {
+  font-size: 1.5rem;
+}
+
+.dashboard__contact__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #e6e6e6;
+}
+
+.dashboard__contact__details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.dashboard__contact__details__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.dashboard__contact__details__name {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.dashboard__contact__icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  color: #333;
+}
+
+.dashboard__contact__phone {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.dashboard__contact__request__button {
+  margin-top: 1rem;
+}
+
+.dashboard__contact__container a  {
+  color: #333;
+}
+
+.dashboard__contact__details__title {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.dashboard__contact__container span {
+  font-weight: 500;
+}
+
+@media (max-width: 648px) {
+  .dashboard__contact__icon {
+    font-size: 1.2rem;
+  }
+
+  .dashboard__contact__details__title {
+    font-size: 1.2rem;
+  }
+
+  .dashboard__contact__details__name {
+    font-size: 1rem;
+  }
+
+  .dashboard__contact__phone {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 648px) {

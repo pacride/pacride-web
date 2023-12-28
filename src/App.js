@@ -43,6 +43,7 @@ function App() {
             <Route index element={<DashboardIndex />} />
             <Route path="profile" element={<Profile />} />
             <Route path="rides/new" element={<NewRide />} />
+            <Route path="ride/:id" element={<DashboardIndex />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

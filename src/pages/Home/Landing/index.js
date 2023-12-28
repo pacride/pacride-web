@@ -13,11 +13,12 @@ import Button from "../../../components/Button/Button";
 import PlacesAutocomplete from "../../../components/Input/PlacesAutoComplete";
 import peopleSharingRide from "../../../assets/images/people_sharing_ride.jpeg";
 import Input from "../../../components/Input/Input";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
 const Landing = () => {
+  const navigate = useNavigate();
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [email, setEmail] = useState("");
@@ -41,6 +42,7 @@ const Landing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate(`/dashboard?from=${from}&to=${to}`);
   };
 
   return (

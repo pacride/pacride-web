@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { currencyOptions } from "../../data/currency";
 import Button from "../Button/Button";
 import "./RideCard.css";
@@ -19,9 +20,11 @@ const RideCard = ({
   departureDate,
   departureTime,
   image,
+  id,
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="card ride__card">
+    <div className="card ride__card" onClick={() => navigate(`/dashboard/ride/${id}`)}>
       {image && (
         <div className="ride__card__image">
           <img src={image} alt="ride" />
