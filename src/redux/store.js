@@ -3,6 +3,9 @@ import { configureStore } from "@reduxjs/toolkit";
 const initialState = {
   user: {},
   rides: [],
+  myRides: [],
+  bookings: [],
+  requests: [],
 };
 
 const reducerFtn = (state = initialState, action = {}) => {
@@ -23,6 +26,32 @@ const reducerFtn = (state = initialState, action = {}) => {
       return {
         ...state,
         myRides: action.payload,
+      };
+
+    case "SET_BOOKINGS":
+      return {
+        ...state,
+        bookings: action.payload,
+      };
+
+    case "UPDATE_BOOKINGS":
+      return {
+        ...state,
+        bookings: [...state.bookings, action.payload],
+      };
+
+    case "DELETE_BOOKING":
+      return {
+        ...state,
+        bookings: state.bookings.filter(
+          (booking) => booking.rideId !== action.payload
+        ),
+      };
+
+    case "SET_REQUESTS":
+      return {
+        ...state,
+        requests: action.payload,
       };
 
     default:

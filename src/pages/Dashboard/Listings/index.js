@@ -16,7 +16,11 @@ import Button from "../../../components/Button/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { toast } from "react-toastify";
-import { setRides as setRidesAction } from "../../../redux/action";
+import {
+  deleteBooking,
+  setRides as setRidesAction,
+  updateBookings,
+} from "../../../redux/action";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
@@ -166,6 +170,7 @@ const Listings = () => {
         return;
       }
       toast.success(data.message);
+      dispatch(updateBookings(data.data.booking));
       setContactDetails((prev) => ({ ...prev, requested: true }));
     } catch (err) {
       console.error(err.message);
@@ -190,6 +195,7 @@ const Listings = () => {
         return;
       }
       toast.success(data.message);
+      dispatch(deleteBooking(id));
       setContactDetails((prev) => ({ ...prev, requested: false }));
     } catch (err) {
       console.error(err.message);
@@ -246,8 +252,7 @@ const Listings = () => {
               className="listings__contact__request__button"
               onClick={
                 contactDetails.self
-                  ? () =>
-                      navigate(`/dashboard/manage/${contactDetails.id}`)
+                  ? () => navigate(`/dashboard/manage/${contactDetails.id}`)
                   : contactDetails.requested
                   ? () => cancelRequest(contactDetails.id)
                   : () => sendRequest(contactDetails.id)

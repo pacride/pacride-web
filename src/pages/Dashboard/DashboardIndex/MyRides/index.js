@@ -1,13 +1,15 @@
-import "./MyRides.css"
+import "./MyRides.css";
 import { useSelector } from "react-redux";
 import RideCard from "../../../../components/Card/RideCard";
 import { useNavigate } from "react-router-dom";
 
 const MyRides = () => {
-    const ridesData = useSelector((state) => state.myRides || []);
-    const navigate = useNavigate();
+  const ridesData = useSelector((state) => state.myRides);
+  const requestsData = useSelector((state) => state.requests);
+  const navigate = useNavigate();
+
   return (
-    <div className="dashboard__index__rides">
+    <div className="dashboard__index__content">
       {ridesData.map((ride) => {
         const departureDate = new Date(ride.departure).toLocaleDateString(
           "en-GB"
@@ -34,12 +36,15 @@ const MyRides = () => {
             departureTime={departureTime}
             btnText={"Manage"}
             onClick={() => navigate(`/dashboard/manage/${ride._id}`)}
-            requests={ride.requests?.length}
+            requests={
+              requestsData.filter((request) => request.rideId === ride._id)
+                .length
+            }
           />
         );
       })}
     </div>
   );
-}
+};
 
-export default MyRides
+export default MyRides;

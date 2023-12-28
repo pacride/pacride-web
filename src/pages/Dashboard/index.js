@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { MoonLoader } from "react-spinners";
-import { setMyRides, setUser } from "../../redux/action";
+import { setBookings, setMyRides, setRequests, setUser } from "../../redux/action";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -30,6 +30,8 @@ const Dashboard = () => {
         }
         dispatch(setUser(data.data.user));
         dispatch(setMyRides(data.data.rides));
+        dispatch(setBookings(data.data.bookings));
+        dispatch(setRequests(data.data.requests));
       })
       .catch((err) => {
         setLoading(false);

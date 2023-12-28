@@ -1,0 +1,29 @@
+.dashboard__index__content__card.pending button {
+    background-color: var(--pending-color);
+}
+
+.dashboard__index__content__card.approved button {
+    background-color: var(--approved-color);
+}
+
+.dashboard__index__content__card.rejected button {
+    background-color: var(--rejected-color);
+}
+
+.dashboard__index__content__card.pending button:hover {
+    background-color: var(--pending-color);
+    color: white;
+    border: none;
+}
+
+.dashboard__index__content__card.approved button:hover {
+    background-color: var(--approved-color);
+    color: white;
+    border: none;
+}
+
+.dashboard__index__content__card.rejected button:hover {
+    background-color: var(--rejected-color);
+    color: white;
+    border: none;
+}

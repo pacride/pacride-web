@@ -77,7 +77,7 @@ const Signup = () => {
       const data = await res.json();
 
       if (data.error) {
-        toast.error(data.error);
+        toast.error(data.message);
         return;
       }
 

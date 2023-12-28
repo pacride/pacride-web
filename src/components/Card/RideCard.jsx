@@ -27,17 +27,18 @@ const RideCard = ({
   btnText,
   onClick,
   requests,
+  className = "",
 }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="card ride__card"
+      className={`card ride__card ${className}`}
       onClick={() => {
         if (onClick) {
           onClick();
           return;
         }
-        navigate(`ride/${id}`);
+        navigate(`/dashboard/listings/ride/${id}`);
       }}
     >
       {image && (
@@ -80,7 +81,9 @@ const RideCard = ({
                 <FaBell className="ride__card__details__body__icon" />
                 <span />
               </div>
-              <h5>{requests} requests</h5>
+              <h5>
+                {requests} request{requests > 1 ? "s" : ""}
+              </h5>
             </div>
           )}
         </div>

@@ -1,5 +1,5 @@
 import "./DashboardIndex.css";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const DashboardIndex = () => {
 
