@@ -24,7 +24,7 @@ const RideCard = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <div className="card ride__card" onClick={() => navigate(`/dashboard/ride/${id}`)}>
+    <div className="card ride__card" onClick={() => navigate(`ride/${id}`)}>
       {image && (
         <div className="ride__card__image">
           <img src={image} alt="ride" />

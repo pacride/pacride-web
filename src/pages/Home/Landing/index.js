@@ -42,7 +42,7 @@ const Landing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/dashboard?from=${from}&to=${to}`);
+    navigate(`/dashboard/listings?from=${from}&to=${to}`);
   };
 
   return (

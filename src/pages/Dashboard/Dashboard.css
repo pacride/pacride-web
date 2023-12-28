@@ -2,13 +2,6 @@
   display: flex;
 }
 
-.dashboard__container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 100vh;
-}
-
 .loading {
   display: flex;
   justify-content: center;

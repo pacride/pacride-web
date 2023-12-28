@@ -1,4 +1,4 @@
-import "./DashboardPageNav.css";
+import "./ListingsNav.css";
 import { FaPlus } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +10,9 @@ const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
   const userData = useSelector((state) => state.user);
 
   return (
-    <div className="dashboard__header">
-      <div className="dashboard__search">
-        <div className="dashboard__search__input">
+    <div className="listings__header">
+      <div className="listings__search">
+        <div className="listings__search__input">
           <input type="text" placeholder="Search" />
           <button>
             <IoSearchOutline />
@@ -20,13 +20,13 @@ const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
         </div>
         <Select value={filter} setValue={setFilter} options={filterOptions} />
       </div>
-      <div className="dashboard__header__title__container">
-        <div className="dashboard__header__title">
-          <h1>Dashboard</h1>
+      <div className="listings__header__title__container">
+        <div className="listings__header__title">
+          <h1>Listings</h1>
           <span>Hello, {userData.username}</span>
         </div>
-        <div className="dashboard__header__button">
-          <button onClick={() => navigate("/dashboard/rides/new")}>
+        <div className="listings__header__button">
+          <button onClick={() => navigate("create")}>
             List a ride
             <FaPlus />
           </button>

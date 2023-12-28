@@ -41,18 +41,23 @@ const DashboardNav = () => {
             <span>Pacride</span>
           </NavLink>
         </div>
+        <NavLink to="listings" end className="dashboard__nav__item">
+          Listings
+        </NavLink>
         <NavLink to="" end className="dashboard__nav__item">
           Dashboard
         </NavLink>
         <NavLink to="profile" className="dashboard__nav__item">
           Profile
         </NavLink>
-        <Link to="/login" className="dashboard__nav__item" onClick={() => localStorage.clear()}>
+        <Link
+          to="/login"
+          className="dashboard__nav__item"
+          onClick={() => localStorage.clear()}
+        >
           Log out
         </Link>
-        <small className="dashboard__nav__footer">
-          © 2024 Pacride
-        </small>
+        <small className="dashboard__nav__footer">© 2024 Pacride</small>
       </div>
     </>
   );

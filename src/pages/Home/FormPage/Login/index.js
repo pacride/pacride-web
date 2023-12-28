@@ -39,7 +39,7 @@ const Login = () => {
 
       toast.success("Logged in successfully");
       localStorage.setItem("token", data.data.token);
-      navigate("/dashboard");
+      navigate("/listings");
     } catch (error) {
       if (/failed to fetch|network *error/i.test(error.message)) {
         toast.error("Please check your internet connection");

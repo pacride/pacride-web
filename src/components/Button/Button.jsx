@@ -1,11 +1,12 @@
+import { forwardRef } from "react"
 import "./Button.css"
 
-const Button = ({ children, className="", ...props }) => {
+const Button = forwardRef(({ children, className, ...props }, ref) => {
   return (
-    <button className={`custom__button ${className}`} {...props}>
-        {children}
+    <button className={`custom__button ${className}`} ref={ref} {...props}>
+      {children}
     </button>
-  )
-}
+  );
+})
 
 export default Button

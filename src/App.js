@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DashboardIndex from "./pages/Dashboard/DashboardIndex";
 import NewRide from "./pages/Dashboard/NewRide";
 import Profile from "./pages/Dashboard/Profile";
+import Listings from "./pages/Dashboard/Listings";
 
 function App() {
   return (
@@ -40,10 +41,13 @@ function App() {
             </Route>
           </Route>
           <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="listings">
+              <Route index element={<Listings />} />
+              <Route path="create" element={<NewRide />} />
+              <Route path="ride/:id" element={<Listings />} />
+            </Route>
             <Route index element={<DashboardIndex />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="rides/new" element={<NewRide />} />
-            <Route path="ride/:id" element={<DashboardIndex />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>
