@@ -1,6 +1,6 @@
 import "./Listings.css";
 import RideCard from "../../../components/Card/RideCard";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import DashboardPageNav from "../../../components/Nav/ListingsNav";
 import { useDispatch, useSelector } from "react-redux";
 import PlacesAutoComplete from "../../../components/Input/PlacesAutoComplete";
@@ -16,6 +16,7 @@ import Button from "../../../components/Button/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { toast } from "react-toastify";
+import { setRides as setRidesAction } from "../../../redux/action";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
@@ -130,7 +131,7 @@ const Listings = () => {
         return;
       }
       if (data.data.rides.length) setOpenOverlay(false);
-      dispatch({ type: "SET_RIDES", payload: data.data.rides });
+      dispatch(setRidesAction(data.data.rides));
     } catch (err) {
       console.error(err.message);
       setLoading(false);
@@ -246,7 +247,7 @@ const Listings = () => {
               onClick={
                 contactDetails.self
                   ? () =>
-                      navigate(`/dashboard/manage/ride/${contactDetails.id}`)
+                      navigate(`/dashboard/manage/${contactDetails.id}`)
                   : contactDetails.requested
                   ? () => cancelRequest(contactDetails.id)
                   : () => sendRequest(contactDetails.id)

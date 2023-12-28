@@ -18,7 +18,13 @@ const reducerFtn = (state = initialState, action = {}) => {
         ...state,
         rides: action.payload,
       };
-    
+
+    case "SET_MY_RIDES":
+      return {
+        ...state,
+        myRides: action.payload,
+      };
+
     default:
       return state;
   }

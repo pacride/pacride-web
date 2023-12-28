@@ -13,6 +13,9 @@ import DashboardIndex from "./pages/Dashboard/DashboardIndex";
 import NewRide from "./pages/Dashboard/NewRide";
 import Profile from "./pages/Dashboard/Profile";
 import Listings from "./pages/Dashboard/Listings";
+import Manage from "./pages/Dashboard/Manage";
+import MyBookings from "./pages/Dashboard/DashboardIndex/MyBookings";
+import MyRides from "./pages/Dashboard/DashboardIndex/MyRides";
 
 function App() {
   return (
@@ -46,8 +49,12 @@ function App() {
               <Route path="create" element={<NewRide />} />
               <Route path="ride/:id" element={<Listings />} />
             </Route>
-            <Route index element={<DashboardIndex />} />
+            <Route path="/dashboard" element={<DashboardIndex />}>
+              <Route index element={<MyRides />} />
+              <Route path="bookings" element={<MyBookings />} />
+            </Route>
             <Route path="profile" element={<Profile />} />
+            <Route path="manage/:id" element={<Manage />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

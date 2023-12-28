@@ -84,6 +84,7 @@
   width: 100%;
   height: 100%;
   margin-top: 1rem;
+  position: relative;
 }
 
 .ride__card__details__body > div {
@@ -96,6 +97,22 @@
   font-size: 1rem;
   font-weight: 500;
   color: #000;
+}
+
+.ride__card__details__body__requests .ride__card__details__body__icon__container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+
+.ride__card__details__body__requests .ride__card__details__body__icon__container span {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.6rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: red;
 }
 
 .ride__card__details__body__icon {

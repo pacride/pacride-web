@@ -1,0 +1,27 @@
+.dashboard__index {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__index__nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1rem 1rem 4rem;
+  gap: 1rem;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dashboard__index__nav a {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.dashboard__index__nav a.active {
+  color: #000;
+}

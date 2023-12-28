@@ -1,13 +1,16 @@
+import "./RideCard.css";
 import { useNavigate } from "react-router-dom";
 import { currencyOptions } from "../../data/currency";
 import Button from "../Button/Button";
-import "./RideCard.css";
 import {
+  FaBell,
   FaCar,
   FaChair,
+  FaComment,
   FaLocationCrosshairs,
   FaLocationDot,
   FaMoneyBill,
+  FaPaperPlane,
 } from "react-icons/fa6";
 
 const RideCard = ({
@@ -21,10 +24,22 @@ const RideCard = ({
   departureTime,
   image,
   id,
+  btnText,
+  onClick,
+  requests,
 }) => {
   const navigate = useNavigate();
   return (
-    <div className="card ride__card" onClick={() => navigate(`ride/${id}`)}>
+    <div
+      className="card ride__card"
+      onClick={() => {
+        if (onClick) {
+          onClick();
+          return;
+        }
+        navigate(`ride/${id}`);
+      }}
+    >
       {image && (
         <div className="ride__card__image">
           <img src={image} alt="ride" />
@@ -59,6 +74,15 @@ const RideCard = ({
               {price}
             </h5>
           </div>
+          {requests > 0 && (
+            <div className="ride__card__details__body__requests">
+              <div className="ride__card__details__body__icon__container">
+                <FaBell className="ride__card__details__body__icon" />
+                <span />
+              </div>
+              <h5>{requests} requests</h5>
+            </div>
+          )}
         </div>
         <div className="ride__card__details__footer">
           <div className="ride__card__details__footer__date">
@@ -68,7 +92,7 @@ const RideCard = ({
             <h5>{departureTime}</h5>
           </div>
           <div className="ride__card__details__footer__button">
-            <Button>Book</Button>
+            <Button>{btnText || "Book"}</Button>
           </div>
         </div>
       </div>
