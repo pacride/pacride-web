@@ -211,8 +211,7 @@ const Listings = () => {
         filter={filter}
         setFilter={setFilter}
       />
-      {!/\/listings$/i.test(location) &&
-      Object.keys(contactDetails).length > 0 ? (
+      {!/\/listings$/i.test(location) ? (
         <div className="listings__contact">
           <button
             className="listings__contact__back"
@@ -221,50 +220,54 @@ const Listings = () => {
             <IoIosArrowBack />
             <span>Back</span>
           </button>
-          <div className="card listings__contact__container">
-            <div className="listings__contact__details">
-              {contactDetails.image && (
-                <img
-                  className="listings__contact__details__image"
-                  src={contactDetails.image}
-                  alt="contact"
-                />
-              )}
-              <h4 className="listings__contact__details__title">
-                Contact details
-              </h4>
-              <div className="listings__contact__details__name">
-                <FaUser className="listings__contact__icon" />
+          {Object.keys(contactDetails).length > 0 ? (
+            <div className="card listings__contact__container">
+              <div className="listings__contact__details">
+                {contactDetails.image && (
+                  <img
+                    className="listings__contact__details__image"
+                    src={contactDetails.image}
+                    alt="contact"
+                  />
+                )}
+                <h4 className="listings__contact__details__title">
+                  Contact details
+                </h4>
+                <div className="listings__contact__details__name">
+                  <FaUser className="listings__contact__icon" />
+                  <span>
+                    {contactDetails.firstname} {contactDetails.lastname}
+                  </span>
+                </div>
+              </div>
+              <div className="listings__contact__phone">
+                <FaPhone className="listings__contact__icon" />
                 <span>
-                  {contactDetails.firstname} {contactDetails.lastname}
+                  <Link to={`tel:${contactDetails.phone}`}>
+                    {contactDetails.phone}
+                  </Link>
                 </span>
               </div>
-            </div>
-            <div className="listings__contact__phone">
-              <FaPhone className="listings__contact__icon" />
-              <span>
-                <Link to={`tel:${contactDetails.phone}`}>
-                  {contactDetails.phone}
-                </Link>
-              </span>
-            </div>
-            <Button
-              className="listings__contact__request__button"
-              onClick={
-                contactDetails.self
-                  ? () => navigate(`/dashboard/manage/${contactDetails.id}`)
+              <Button
+                className="listings__contact__request__button"
+                onClick={
+                  contactDetails.self
+                    ? () => navigate(`/dashboard/manage/${contactDetails.id}`)
+                    : contactDetails.requested
+                    ? () => cancelRequest(contactDetails.id)
+                    : () => sendRequest(contactDetails.id)
+                }
+              >
+                {contactDetails.self
+                  ? "Manage Ride"
                   : contactDetails.requested
-                  ? () => cancelRequest(contactDetails.id)
-                  : () => sendRequest(contactDetails.id)
-              }
-            >
-              {contactDetails.self
-                ? "Manage Ride"
-                : contactDetails.requested
-                ? "Cancel Request"
-                : "Send Request"}
-            </Button>
-          </div>
+                  ? "Cancel Request"
+                  : "Send Request"}
+              </Button>
+            </div>
+          ) : (<div>
+            Loading...
+          </div>)}
         </div>
       ) : (
         <>
