@@ -35,6 +35,13 @@
     margin-right: auto;
 }
 
+.home__nav__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .home__nav__logo__container span {
     font-size: 1.5rem;
     font-weight: 600;

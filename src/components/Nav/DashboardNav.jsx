@@ -2,6 +2,7 @@ import "./DashboardNav.css";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import logoImage from "../../assets/svgs/logo.svg";
 
 const DashboardNav = () => {
   const [toggle, setToggle] = useState(false);
@@ -37,7 +38,7 @@ const DashboardNav = () => {
       <div className={`dashboard__nav ${toggle ? "active" : ""}`}>
         <div className="dashboard__nav__logo">
           <NavLink to="" end className="dashboard__nav__logo__container">
-            <img src="https://via.placeholder.com/50" alt="logo" />
+            <img src={logoImage} alt="logo" />
             <span>Pacride</span>
           </NavLink>
         </div>

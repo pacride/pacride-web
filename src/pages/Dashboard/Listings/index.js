@@ -269,7 +269,9 @@ const Listings = () => {
               </div>
             ) : rides.length === 0 ? (
               <div className="listings__rides__loading">
-                <h1>No rides available</h1>
+                <h1 className="listings__rides__loading__title">
+                  No rides found
+                </h1>
               </div>
             ) : (
               <>{rides}</>

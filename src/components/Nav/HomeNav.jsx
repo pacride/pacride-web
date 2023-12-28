@@ -1,10 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import "./HomeNav.css";
+import logoImage from "../../assets/svgs/logo.svg";
 
 const HomeNav = () => {
   return (
     <div className="home__nav">
       <Link to={"/"} className="home__nav__item home__nav__logo__container">
+        <img src={logoImage} alt="logo" className="home__nav__logo" />
         <span>Pacride</span>
       </Link>
       <NavLink to={"/"} className="home__nav__item">

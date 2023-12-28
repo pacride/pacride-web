@@ -5,6 +5,12 @@
   min-height: 100vh;
 }
 
+.listings__rides__loading__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
 .listings__search .listings__custom__select {
   width: 120px;
 }

@@ -14,6 +14,7 @@ import PlacesAutocomplete from "../../../components/Input/PlacesAutoComplete";
 import peopleSharingRide from "../../../assets/images/people_sharing_ride.jpeg";
 import Input from "../../../components/Input/Input";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logoImage from "../../../assets/svgs/logo.svg";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
@@ -83,6 +84,7 @@ const Landing = () => {
       </section>
       <section className="landing__about__section" ref={aboutSectionRef}>
         <div className="landing__about__container">
+          <img src={logoImage} alt="logo" className="landing__about__logo" />
           <h2 className="landing__about__title">About Pacride</h2>
           <p className="landing__about__text">
             Pacride is a ride sharing platform that enables passengers going to
@@ -110,7 +112,7 @@ const Landing = () => {
             <div className="landing__how__step">
               <span className="landing__how__step__number">3</span>
               <p className="landing__how__step__text">
-                Pay for your ride and wait for the driver
+                Contact the lister to book a ride
               </p>
             </div>
           </div>
