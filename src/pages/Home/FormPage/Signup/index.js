@@ -3,7 +3,7 @@ import { useState } from "react";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 import { FaUser } from "react-icons/fa";
-import { MdEmail, MdAlternateEmail, MdOutlinePassword } from "react-icons/md";
+import { MdEmail, MdAlternateEmail, MdOutlinePassword, MdPhone } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const Signup = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassowrd] = useState("");
@@ -33,6 +34,7 @@ const Signup = () => {
       !firstname ||
       !lastname ||
       !email ||
+      !phone ||
       !username ||
       !password ||
       !confirmPassword
@@ -66,6 +68,7 @@ const Signup = () => {
           firstname,
           lastname,
           email,
+          phone,
           username,
           password,
         }),
@@ -120,6 +123,16 @@ const Signup = () => {
         name="email"
         value={email}
         setValue={setEmail}
+        required
+      />
+      <Input
+        type="number"
+        label={"Phone"}
+        placeholder="09038043846"
+        LeftIcon={MdPhone}
+        name="phone"
+        value={phone}
+        setValue={setPhone}
         required
       />
       <Input
