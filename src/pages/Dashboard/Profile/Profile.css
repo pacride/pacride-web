@@ -1,3 +1,114 @@
 .profile {
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.profile__title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+}
+
+.profile__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 2px solid var(--primary-color);
+  position: relative;
+}
+
+.profile__image input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.profile__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile__info__item {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.profile__info__item label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.profile__info__item .change__password__btn {
+  background-color: #333;
+  color: white;
+}
+
+.profile__info__item .change__password__btn:hover {
+  background-color: black;
+}
+
+.settings__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.settings__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+
+.settings__item span {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.settings__item button {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-text);
 }

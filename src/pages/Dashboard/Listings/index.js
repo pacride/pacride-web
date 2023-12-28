@@ -24,7 +24,7 @@ const Listings = () => {
     { value: "vehicle", label: "Vehicle" },
     { value: "seats", label: "Seats" },
     { value: "price", label: "Price" },
-    { value: "date", label: "Date/Time" },
+    { value: "date", label: "Date" },
   ];
 
   const navigate = useNavigate();
