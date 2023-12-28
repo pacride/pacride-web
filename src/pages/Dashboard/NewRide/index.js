@@ -114,7 +114,7 @@ const NewRide = () => {
             label={"Vehicle"}
             className="new__ride__input"
             type={"text"}
-            placeholder={"Enter your vehicle"}
+            placeholder={"Enter vehicle name"}
             LeftIcon={FaCar}
             setValue={setVehicle}
             value={vehicle}
@@ -148,10 +148,10 @@ const NewRide = () => {
             options={currencyOptions}
           />
           <Input
-            label={"Price"}
+            label={"Price (per passenger)"}
             className="new__ride__input"
             type={"number"}
-            placeholder={"Enter your price"}
+            placeholder={"Enter price"}
             LeftIcon={FaMoneyBill}
             setValue={setPrice}
             value={price}
@@ -160,7 +160,7 @@ const NewRide = () => {
             label={"Available seats"}
             className="new__ride__input"
             type={"number"}
-            placeholder={"Enter your available seats"}
+            placeholder={"Enter available seats"}
             LeftIcon={FaChair}
             setValue={setAvailableSeats}
             value={availableSeats}
