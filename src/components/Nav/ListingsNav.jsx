@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Select from "../Select/Select";
 import { useSelector } from "react-redux";
 
-const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
+const DashboardPageNav = ({ search, setSearch, filterOptions, filter, setFilter }) => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.user);
 
@@ -13,7 +13,7 @@ const DashboardPageNav = ({ filterOptions, filter, setFilter }) => {
     <div className="listings__header">
       <div className="listings__search">
         <div className="listings__search__input">
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
           <button>
             <IoSearchOutline />
           </button>

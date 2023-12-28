@@ -1,4 +1,4 @@
-import "./Listings.css"
+import "./Listings.css";
 import RideCard from "../../../components/Card/RideCard";
 import { useEffect, useRef, useState } from "react";
 import DashboardPageNav from "../../../components/Nav/ListingsNav";
@@ -29,19 +29,63 @@ const Listings = () => {
 
   const navigate = useNavigate();
   const location = useLocation().pathname;
-  const search = useLocation().search?.split(/[?&]/);
+  const searchLocation = useLocation().search?.split(/[?&]/);
   const [filter, setFilter] = useState("vehicle");
   const [from, setFrom] = useState(
-    search?.find((el) => el.includes("from"))?.split("=")[1] || ""
+    searchLocation?.find((el) => el.includes("from"))?.split("=")[1] || ""
   );
   const [to, setTo] = useState(
-    search?.find((el) => el.includes("to"))?.split("=")[1] || ""
+    searchLocation?.find((el) => el.includes("to"))?.split("=")[1] || ""
   );
   const [openOverlay, setOpenOverlay] = useState(true);
   const [loading, setLoading] = useState(true);
   const [contactDetails, setContactDetails] = useState({});
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const ridesData = useSelector((state) => state.rides || []);
+  const [rides, setRides] = useState(ridesData);
+
+  useEffect(() => {
+    setRides(
+      ridesData
+        .filter((ride) => {
+          if (filter === "vehicle")
+            return ride.vehicle.toLowerCase().includes(search.toLowerCase());
+          if (filter === "seats") return ride.availableSeats >= search;
+          if (filter === "price" && search) return ride.price <= search;
+          if (filter === "date" && search)
+            return new Date(ride.departure) >= new Date(search);
+          return ride;
+        })
+        .map((ride) => {
+          const departureDate = new Date(ride.departure).toLocaleDateString(
+            "en-GB"
+          );
+          const departureTime = new Date(ride.departure)
+            .toLocaleTimeString("en-GB", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })
+            .toUpperCase();
+          return (
+            <RideCard
+              key={ride._id}
+              id={ride._id}
+              image={ride.image}
+              from={ride.from}
+              to={ride.to}
+              carName={ride.vehicle}
+              seatsAvailable={ride.availableSeats}
+              currency={ride.currency}
+              price={ride.price}
+              departureDate={departureDate}
+              departureTime={departureTime}
+            />
+          );
+        })
+    );
+  }, [ridesData, filter, search]);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: MAPS_API_KEY,
@@ -154,6 +198,8 @@ const Listings = () => {
   return (
     <div className="listings__container">
       <DashboardPageNav
+        search={search}
+        setSearch={setSearch}
         filterOptions={filterOptions}
         filter={filter}
         setFilter={setFilter}
@@ -221,40 +267,12 @@ const Listings = () => {
               <div className="listings__rides__loading">
                 <h1>Loading...</h1>
               </div>
-            ) : ridesData.length === 0 ? (
+            ) : rides.length === 0 ? (
               <div className="listings__rides__loading">
                 <h1>No rides available</h1>
               </div>
             ) : (
-              <>
-                {ridesData.map((ride) => {
-                  const departureDate = new Date(
-                    ride.departure
-                  ).toLocaleDateString("en-GB");
-                  const departureTime = new Date(ride.departure)
-                    .toLocaleTimeString("en-GB", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })
-                    .toUpperCase();
-                  return (
-                    <RideCard
-                      key={ride._id}
-                      id={ride._id}
-                      image={ride.image}
-                      from={ride.from}
-                      to={ride.to}
-                      carName={ride.vehicle}
-                      seatsAvailable={ride.availableSeats}
-                      currency={ride.currency}
-                      price={ride.price}
-                      departureDate={departureDate}
-                      departureTime={departureTime}
-                    />
-                  );
-                })}
-              </>
+              <>{rides}</>
             )}
           </div>
           <div className={`listings__location ${openOverlay && "open"}`}>
@@ -298,6 +316,6 @@ const Listings = () => {
       )}
     </div>
   );
-}
+};
 
-export default Listings
+export default Listings;
