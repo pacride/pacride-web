@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Select from "../Select/Select";
 import { useSelector } from "react-redux";
 
-const DashboardPageNav = ({ search, setSearch, filterOptions, filter, setFilter }) => {
+const ListingsNav = ({ search, setSearch, filterOptions, filter, setFilter }) => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.user);
 
@@ -36,4 +36,4 @@ const DashboardPageNav = ({ search, setSearch, filterOptions, filter, setFilter 
   );
 };
 
-export default DashboardPageNav;
+export default ListingsNav;

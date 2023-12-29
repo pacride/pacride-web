@@ -54,6 +54,14 @@ const reducerFtn = (state = initialState, action = {}) => {
         requests: action.payload,
       };
 
+    case "DELETE_REQUEST":
+      return {
+        ...state,
+        requests: state.requests.filter(
+          (request) => request._id !== action.payload
+        ),
+      };
+
     default:
       return state;
   }

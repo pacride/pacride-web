@@ -16,6 +16,10 @@ import Listings from "./pages/Dashboard/Listings";
 import Manage from "./pages/Dashboard/Manage";
 import MyBookings from "./pages/Dashboard/DashboardIndex/MyBookings";
 import MyRides from "./pages/Dashboard/DashboardIndex/MyRides";
+import Edit from "./pages/Dashboard/Manage/Edit";
+import ManageIndex from "./pages/Dashboard/Manage/ManageIndex";
+import ListingsIndex from "./pages/Dashboard/Listings/ListingsIndex";
+import Contact from "./pages/Dashboard/Contact";
 
 function App() {
   return (
@@ -44,17 +48,20 @@ function App() {
             </Route>
           </Route>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="listings">
-              <Route index element={<Listings />} />
+            <Route path="listings" element={<Listings />}>
+              <Route index element={<ListingsIndex />} />
               <Route path="create" element={<NewRide />} />
-              <Route path="ride/:id" element={<Listings />} />
+              <Route path="ride/:id" element={<Contact />} />
             </Route>
             <Route path="/dashboard" element={<DashboardIndex />}>
               <Route index element={<MyRides />} />
               <Route path="bookings" element={<MyBookings />} />
             </Route>
             <Route path="profile" element={<Profile />} />
-            <Route path="manage/:id" element={<Manage />} />
+            <Route path="manage/:id" element={<Manage />}>
+              <Route index element={<ManageIndex />} />
+              <Route path="edit" element={<Edit />} />
+            </Route>
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

@@ -2,8 +2,8 @@
     background-color: var(--pending-color);
 }
 
-.dashboard__index__content__card.approved button {
-    background-color: var(--approved-color);
+.dashboard__index__content__card.accepted button {
+    background-color: var(--accepted-color);
 }
 
 .dashboard__index__content__card.rejected button {
@@ -16,8 +16,8 @@
     border: none;
 }
 
-.dashboard__index__content__card.approved button:hover {
-    background-color: var(--approved-color);
+.dashboard__index__content__card.accepted button:hover {
+    background-color: var(--accepted-color);
     color: white;
     border: none;
 }

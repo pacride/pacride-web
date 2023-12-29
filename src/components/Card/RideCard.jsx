@@ -64,7 +64,9 @@ const RideCard = ({
           </div>
           <div className="ride__card__details__body__seats">
             <FaChair className="ride__card__details__body__icon" />
-            <h5>{seatsAvailable} seats available</h5>
+            <h5>
+              {seatsAvailable} seat{seatsAvailable > 1 ? "s" : ""} available
+            </h5>
           </div>
           <div className="ride__card__details__body__price">
             <FaMoneyBill className="ride__card__details__body__icon" />

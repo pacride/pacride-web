@@ -1,9 +1,7 @@
 :root {
   /* COLORS */
-  /* light blue */
   --primary-color: #1877F2;
   --secondary-color: #ff1493;
-  /* dark primary */
   --primary-color-dark: #187cff;
   --inactive-color: #d3d3d3;
   --success-color: #00ff00;
@@ -11,7 +9,7 @@
   --warning-color: #ffff00;
   --info-color: #00bfff;
   --pending-color: #ffa500;
-  --approved-color: #00ff00;
+  --accepted-color: #00ff00;
   --rejected-color: #ff0000;
 
   /* STYLES */

@@ -46,3 +46,10 @@ export const setRequests = (data) => {
     payload: data,
   };
 };
+
+export const deleteRequest = (data) => {
+  return {
+    type: "DELETE_REQUEST",
+    payload: data,
+  };
+};

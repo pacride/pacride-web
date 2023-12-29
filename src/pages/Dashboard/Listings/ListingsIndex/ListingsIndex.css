@@ -1,0 +1,76 @@
+.listings__rides {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.listings__location {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  background-color: #fff;
+  border-top: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+}
+
+.listings__location.open {
+  padding: 1rem;
+  height: auto;
+}
+
+.listings__location__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.listings__location__container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.listings__location.open .listings__location__container {
+  display: flex;
+}
+
+.listings__location__input {
+  max-width: 500px;
+}
+
+.listings__location__overlay__icon {
+  box-sizing: content-box;
+  font-size: 3rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.listings__location.open .listings__location__overlay__icon {
+  bottom: unset;
+  bottom: unset;
+  left: unset;
+  transform: unset;
+  position: relative;
+  margin: 0;
+}
+
+@media (max-width: 648px) {
+  .listings__location {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .listings__location__overlay__icon {
+    font-size: 2rem;
+  }
+}
