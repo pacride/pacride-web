@@ -17,26 +17,26 @@ const ManageIndex = () => {
 
   const updateRequest = async (id, status) => {
     try {
-        const response = await fetch(
-          `${process.env.REACT_APP_SERVER}/ride/${id}/request`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-            body: JSON.stringify({ status }),
-          }
-        );
-        const data = await response.json();
-        if (data.error) {
-            toast.error(data.message);
-            return;
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER}/ride/${id}/request`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ status }),
         }
-        toast.success(data.message);
-        dispatch(deleteRequest(id));
+      );
+      const data = await response.json();
+      if (data.error) {
+        toast.error(data.message);
+        return;
+      }
+      toast.success(data.message);
+      dispatch(deleteRequest(id, status, location.split("/")[3]));
     } catch (error) {
-        toast.error(error.message);
+      toast.error(error.message);
     }
   };
 

@@ -47,9 +47,9 @@ export const setRequests = (data) => {
   };
 };
 
-export const deleteRequest = (data) => {
+export const deleteRequest = (requestId, status = "rejected", rideId) => {
   return {
     type: "DELETE_REQUEST",
-    payload: data,
+    payload: { requestId, status, rideId },
   };
 };

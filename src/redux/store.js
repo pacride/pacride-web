@@ -57,9 +57,21 @@ const reducerFtn = (state = initialState, action = {}) => {
     case "DELETE_REQUEST":
       return {
         ...state,
-        requests: state.requests.filter(
-          (request) => request._id !== action.payload
-        ),
+        requests: state.requests.filter((request) => {
+          return request._id !== action.payload.requestId;
+        }),
+        myRides:
+          action.payload.status === "accepted"
+            ? state.myRides.map((ride) => {
+                if (ride._id === action.payload.rideId) {
+                  return {
+                    ...ride,
+                    availableSeats: ride.availableSeats - 1,
+                  };
+                }
+                return ride;
+              })
+            : state.myRides,
       };
 
     default:
