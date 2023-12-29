@@ -50,9 +50,9 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="listings" element={<Listings />}>
               <Route index element={<ListingsIndex />} />
-              <Route path="create" element={<NewRide />} />
               <Route path="ride/:id" element={<Contact />} />
             </Route>
+            <Route path="listings/create" element={<NewRide />} />
             <Route path="/dashboard" element={<DashboardIndex />}>
               <Route index element={<MyRides />} />
               <Route path="bookings" element={<MyBookings />} />

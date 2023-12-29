@@ -7,6 +7,11 @@ const MyBookings = () => {
 
   return (
     <div className="dashboard__index__content">
+      {ridesData.length === 0 && (
+        <div className="dashboard__index__content__empty">
+          <h2>You have no bookings</h2>
+        </div>
+      )}
       {ridesData.map((ride) => {
         const departureDate = new Date(
           ride.metadata.departure
