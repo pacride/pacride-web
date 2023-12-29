@@ -17,9 +17,10 @@ import Manage from "./pages/Dashboard/Manage";
 import MyBookings from "./pages/Dashboard/DashboardIndex/MyBookings";
 import MyRides from "./pages/Dashboard/DashboardIndex/MyRides";
 import Edit from "./pages/Dashboard/Manage/Edit";
-import ManageIndex from "./pages/Dashboard/Manage/ManageIndex";
 import ListingsIndex from "./pages/Dashboard/Listings/ListingsIndex";
 import Contact from "./pages/Dashboard/Contact";
+import Requests from "./pages/Dashboard/Manage/Requests";
+import Passengers from "./pages/Dashboard/Manage/Passengers";
 
 function App() {
   return (
@@ -59,7 +60,8 @@ function App() {
             </Route>
             <Route path="profile" element={<Profile />} />
             <Route path="manage/:id" element={<Manage />}>
-              <Route index element={<ManageIndex />} />
+              <Route index element={<Requests />} />
+              <Route path="passengers" element={<Passengers />} />
               <Route path="edit" element={<Edit />} />
             </Route>
           </Route>

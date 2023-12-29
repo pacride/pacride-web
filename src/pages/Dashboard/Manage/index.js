@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import "./Manage.css";
 import Button from "../../../components/Button/Button";
 
@@ -10,9 +10,14 @@ const Manage = () => {
     <div className="manage">
       <div className="manage__nav">
         {!/edit\/*$/i.test(location) ? (
-          <Link to={""} className="manage__nav__item">
-            Requests
-          </Link>
+          <>
+            <NavLink to={""} className="manage__nav__item">
+              Requests
+            </NavLink>
+            <NavLink to={"passengers"} className="manage__nav__item">
+              Passengers
+            </NavLink>
+          </>
         ) : (
           <Link className="manage__nav__item">Edit</Link>
         )}

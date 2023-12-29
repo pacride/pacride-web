@@ -41,3 +41,7 @@
   font-weight: 500;
   color: #333;
 }
+
+.manage__nav a.active {
+  color: #000;
+}

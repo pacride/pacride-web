@@ -9,7 +9,7 @@ const MyBookings = () => {
     <div className="dashboard__index__content">
       {ridesData.length === 0 && (
         <div className="dashboard__index__content__empty">
-          <h2>You have no bookings</h2>
+          <h2>You have not booked any rides</h2>
         </div>
       )}
       {ridesData.map((ride) => {

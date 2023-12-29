@@ -4,6 +4,7 @@ import Input from "../../../components/Input/Input";
 import { useRef, useState } from "react";
 import Button from "../../../components/Button/Button";
 import anonymousUser from "../../../assets/svgs/anonymous_user.svg";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const userData = useSelector((state) => state.user);
@@ -23,6 +24,31 @@ const Profile = () => {
     } else {
       localStorage.setItem("theme", "light");
       setTheme("light");
+    }
+  };
+
+  const resetPassword = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER}/reset-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.error) {
+        toast.error(data.message);
+        return;
+      }
+      toast.success(data.message);
+    }
+    catch (err) {
+      console.log(err.message);
+      toast.error("Something went wrong");
     }
   };
 
@@ -92,7 +118,8 @@ const Profile = () => {
               <Button>Save</Button>
             </div>
             <div className="profile__info__item">
-              <Button className="change__password__btn">Change Password</Button>
+              <Button className="change__password__btn" onClick={resetPassword}>
+              Change Password</Button>
             </div>
           </div>
         </section>

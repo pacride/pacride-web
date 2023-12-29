@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./ManageIndex.css";
+import "./Requests.css";
 import anonymousUser from "../../../../assets/svgs/anonymous_user.svg";
 import { currencyOptions } from "../../../../data/currency";
 import { Link, useLocation } from "react-router-dom";
 import { FaCar, FaChair } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { deleteRequest } from "../../../../redux/action";
+import ManageNav from "../components/ManageNav";
 
-const ManageIndex = () => {
+const Requests = () => {
   const location = useLocation().pathname;
   const requestsData = useSelector((state) => state.requests);
-  const ridesData = useSelector((state) => state.myRides)?.find(
-    (ride) => ride._id === location.split("/")[3]
-  );
   const dispatch = useDispatch();
 
   const updateRequest = async (id, status) => {
@@ -41,21 +39,20 @@ const ManageIndex = () => {
   };
 
   return (
-    <div className="manageindex">
-      <div className="manageindex__header">
-        <div className="manageindex__header__item">
-          <FaCar />
-          <span>{ridesData?.vehicle}</span>
-        </div>
-        <div className="manageindex__header__item">
-          <FaChair />
-          <span>
-            {ridesData?.availableSeats} seat
-            {ridesData?.availableSeats > 1 ? "s" : ""} available
-          </span>
-        </div>
-      </div>
-      <div className="manageindex__content">
+    <div className="requests">
+      <ManageNav />
+      <div className="requests__content">
+        {
+          requestsData.length === 0 && (
+            <div className="request-item">
+              <div className="request-item__left">
+                <div className="user-details">
+                  <span className="user-name" style={{ fontSize: "1.5rem" }}>No requests yet</span>
+                </div>
+              </div>
+            </div>
+          )
+        }
         {requestsData &&
           requestsData
             .filter((request) => {
@@ -124,4 +121,4 @@ const ManageIndex = () => {
   );
 };
 
-export default ManageIndex;
+export default Requests;

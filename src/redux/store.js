@@ -6,6 +6,7 @@ const initialState = {
   myRides: [],
   bookings: [],
   requests: [],
+  passengers: [],
 };
 
 const reducerFtn = (state = initialState, action = {}) => {
