@@ -6,7 +6,6 @@ const initialState = {
   myRides: [],
   bookings: [],
   requests: [],
-  passengers: [],
 };
 
 const reducerFtn = (state = initialState, action = {}) => {
@@ -15,6 +14,15 @@ const reducerFtn = (state = initialState, action = {}) => {
       return {
         ...state,
         user: action.payload,
+      };
+
+    case "UPDATE_USER":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+        },
       };
 
     case "SET_RIDES":
@@ -27,6 +35,12 @@ const reducerFtn = (state = initialState, action = {}) => {
       return {
         ...state,
         myRides: action.payload,
+      };
+
+    case "UPDATE_MY_RIDES":
+      return {
+        ...state,
+        myRides: [...state.myRides, action.payload],
       };
 
     case "SET_BOOKINGS":
@@ -68,11 +82,26 @@ const reducerFtn = (state = initialState, action = {}) => {
                   return {
                     ...ride,
                     availableSeats: ride.availableSeats - 1,
+                    passengers: [...ride.passengers, action.payload.data],
                   };
                 }
                 return ride;
               })
             : state.myRides,
+      };
+
+    case "UPDATE_RIDE":
+      return {
+        ...state,
+        myRides: state.myRides.map((ride) => {
+          if (ride._id === action.payload._id) {
+            return {
+              ...ride,
+              ...action.payload,
+            };
+          }
+          return ride;
+        }),
       };
 
     default:

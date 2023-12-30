@@ -15,6 +15,8 @@ import PlacesAutoComplete from "../../../components/Input/PlacesAutoComplete";
 import { useLoadScript } from "@react-google-maps/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateMyRides } from "../../../redux/action";
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
 const NewRide = () => {
@@ -36,6 +38,7 @@ const NewRide = () => {
   const [pickupTime, setPickupTime] = useState("");
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
 
   const imageRef = useRef(null);
   const formRef = useRef(null);
@@ -91,6 +94,7 @@ const NewRide = () => {
       return;
     }
     toast.success("Ride created successfully");
+    dispatch(updateMyRides(data.data.ride));
     formRef.current.reset();
     setVehicle("");
     setFrom("");

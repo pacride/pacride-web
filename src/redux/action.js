@@ -5,6 +5,13 @@ export const setUser = (data) => {
   };
 };
 
+export const updateUser = (data) => {
+  return {
+    type: "UPDATE_USER",
+    payload: data,
+  };
+};
+
 export const setRides = (data) => {
   return {
     type: "SET_RIDES",
@@ -15,6 +22,13 @@ export const setRides = (data) => {
 export const setMyRides = (data) => {
   return {
     type: "SET_MY_RIDES",
+    payload: data,
+  };
+};
+
+export const updateMyRides = (data) => {
+  return {
+    type: "UPDATE_MY_RIDES",
     payload: data,
   };
 };
@@ -47,9 +61,21 @@ export const setRequests = (data) => {
   };
 };
 
-export const deleteRequest = (requestId, status = "rejected", rideId) => {
+export const deleteRequest = (
+  requestId,
+  status = "rejected",
+  rideId,
+  data = {}
+) => {
   return {
     type: "DELETE_REQUEST",
-    payload: { requestId, status, rideId },
+    payload: { requestId, status, rideId, data },
+  };
+};
+
+export const updateRide = (data) => {
+  return {
+    type: "UPDATE_RIDE",
+    payload: data,
   };
 };

@@ -32,7 +32,7 @@ const Requests = () => {
         return;
       }
       toast.success(data.message);
-      dispatch(deleteRequest(id, status, location.split("/")[3]));
+      dispatch(deleteRequest(id, status, location.split("/")[3], data.data));
     } catch (error) {
       toast.error(error.message);
     }
