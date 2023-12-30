@@ -21,15 +21,6 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
-    console.log({
-      firstname,
-      lastname,
-      email,
-      username,
-      password,
-      confirmPassword,
-    });
     if (
       !firstname ||
       !lastname ||
