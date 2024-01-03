@@ -105,13 +105,6 @@
   min-height: calc(100vh - (var(--header-height) * 2));
 }
 
-.landing__about__logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
 .landing__about__container {
   max-width: 700px;
   width: 100%;
@@ -119,13 +112,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+}
+
+.landing__about__logo {
+  height: 100px;
+  overflow: hidden;
 }
 
 .landing__about__title {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 1rem;
   color: var(--primary-color);
 }
 

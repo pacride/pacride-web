@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: {},
+  user: null,
   rides: [],
   myRides: [],
   bookings: [],

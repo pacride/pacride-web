@@ -39,7 +39,7 @@ const DashboardNav = () => {
         <div className="dashboard__nav__logo">
           <NavLink to="" end className="dashboard__nav__logo__container">
             <img src={logoImage} alt="logo" />
-            <span>Pacride</span>
+            {/* <span>Pacride</span> */}
           </NavLink>
         </div>
         <NavLink to="listings" end className="dashboard__nav__item">

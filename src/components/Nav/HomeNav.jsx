@@ -7,7 +7,7 @@ const HomeNav = () => {
     <div className="home__nav">
       <Link to={"/"} className="home__nav__item home__nav__logo__container">
         <img src={logoImage} alt="logo" className="home__nav__logo" />
-        <span>Pacride</span>
+        {/* <span>Pacride</span> */}
       </Link>
       <NavLink to={"/"} className="home__nav__item">
         <span>Home</span>
