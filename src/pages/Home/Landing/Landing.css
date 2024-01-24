@@ -1,3 +1,11 @@
+#queekk-btn {
+  bottom: 90px;
+}
+
+#queekk-chat-container {
+  bottom: 160px;
+}
+
 .landing {
   flex: 1;
   display: flex;

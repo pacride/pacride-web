@@ -37,6 +37,27 @@ const Landing = () => {
   });
 
   useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://queekk-service.vercel.app/assistant.css";
+    document.head.appendChild(link);
+    const script = document.createElement("script");
+    script.src =
+      "https://queekk-service.vercel.app/assistant/q-eb04f432d24e377a5ff73658b90ea2e79f95c005";
+    script.async = true;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      window.Queekk.setMainColors("#1877F2");
+    };
+
+    return () => {
+      document.head.removeChild(link);
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
     if (/\/about/.test(location))
       aboutSectionRef.current?.scrollIntoView({ behavior: "smooth" });
     else if (/\/contact/.test(location))
@@ -52,7 +73,7 @@ const Landing = () => {
     }
     document.body.style.cursor = "default";
     contactBtnRef.current.disabled = false;
-  }, [loading])
+  }, [loading]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,6 +110,7 @@ const Landing = () => {
 
   return (
     <div className="landing">
+      <div id="queekk-container" />
       <section className="landing__title__section">
         <div className="landing__title__container">
           <h1 className="landing__title__text">
@@ -189,7 +211,9 @@ const Landing = () => {
               onChange={(e) => setMessage(e.target.value)}
               required
             />
-            <Button ref={contactBtnRef} className="landing__contact__button">Send</Button>
+            <Button ref={contactBtnRef} className="landing__contact__button">
+              Send
+            </Button>
           </form>
         </div>
       </section>
