@@ -13,13 +13,13 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "Login | Pacride";
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    useEffect(() => {
-      document.title = "Login | Pacride";
-    }, []);
-
+    
     if (!username || !password)
       return toast.error("Username and password are required");
 
