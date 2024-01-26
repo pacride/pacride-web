@@ -37,6 +37,11 @@ const Landing = () => {
   });
 
   useEffect(() => {
+  }, []);
+  
+  useEffect(() => {
+    document.title = "Pacride";
+    
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = "https://queekk-service.vercel.app/assistant.css";

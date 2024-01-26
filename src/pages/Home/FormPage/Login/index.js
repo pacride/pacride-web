@@ -3,7 +3,7 @@ import Button from "../../../../components/Button/Button";
 import Input from "../../../../components/Input/Input";
 import { MdAlternateEmail, MdOutlinePassword } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -16,10 +16,12 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      toast.error("Username and password are required");
-      return;
-    }
+    useEffect(() => {
+      document.title = "Login | Pacride";
+    }, []);
+
+    if (!username || !password)
+      return toast.error("Username and password are required");
 
     try {
       const res = await fetch(`${process.env.REACT_APP_SERVER}/login`, {

@@ -19,6 +19,10 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "Signup | Pacride";
+  }, []);
+
   const handleSignup = async (e) => {
     e.preventDefault();
     if (

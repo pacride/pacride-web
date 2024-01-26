@@ -9,16 +9,6 @@ import { useEffect } from "react";
 const FormPage = () => {
   const location = useLocation().pathname;
 
-  useEffect(() => {
-    if (/\/login/i.test(location)) {
-      document.title = "Login | Pacride";
-    } else if (/\/signup/i.test(location)) {
-      document.title = "Signup | Pacride";
-    } else {
-      document.title = "Pacride";
-    }
-  }, [location]);
-
   return (
     <div className="formpage">
       <div>
@@ -53,7 +43,7 @@ const FormPage = () => {
           <Outlet />
         </div>
         <footer className="formpage__footer">
-          <small>Pacride © 2021. All rights reserved.</small>
+          <small>Pacride © 2024. All rights reserved.</small>
         </footer>
       </div>
     </div>
