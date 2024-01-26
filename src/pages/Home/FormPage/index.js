@@ -4,7 +4,6 @@ import signupGifFallback from "../../../assets/images/people_in_car.jpg";
 import loginGif2 from "../../../assets/gif/people_in_car2.gif";
 import loginGif2Fallback from "../../../assets/images/people_in_car2.jpg";
 import { Outlet, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 const FormPage = () => {
   const location = useLocation().pathname;

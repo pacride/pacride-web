@@ -35,9 +35,6 @@ const Landing = () => {
     googleMapsApiKey: MAPS_API_KEY,
     libraries: ["places"],
   });
-
-  useEffect(() => {
-  }, []);
   
   useEffect(() => {
     document.title = "Pacride";
