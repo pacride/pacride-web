@@ -41,7 +41,17 @@ const Edit = () => {
     } else {
       setChanges(false);
     }
-  }, [image, vehicle, from, to, currency, price, departure, availableSeats]);
+  }, [
+    image,
+    vehicle,
+    from,
+    to,
+    currency,
+    price,
+    departure,
+    availableSeats,
+    rideData,
+  ]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

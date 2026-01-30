@@ -6,11 +6,9 @@ import {
   FaBell,
   FaCar,
   FaChair,
-  FaComment,
   FaLocationCrosshairs,
   FaLocationDot,
   FaMoneyBill,
-  FaPaperPlane,
 } from "react-icons/fa6";
 
 const RideCard = ({
@@ -72,7 +70,7 @@ const RideCard = ({
             <FaMoneyBill className="ride__card__details__body__icon" />
             <h5>
               {currencyOptions.filter(
-                (option) => option.label === currency
+                (option) => option.label === currency,
               )?.[0]?.value || []}
               {price}
             </h5>

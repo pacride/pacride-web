@@ -1,4 +1,4 @@
-import { FaShieldHeart, FaUserCheck, FaPhone, FaLocationDot } from "react-icons/fa6";
+import { FaShieldHeart, FaUserCheck, FaLocationDot } from "react-icons/fa6";
 
 const SafetyContent = () => {
   return (
@@ -30,8 +30,8 @@ const SafetyContent = () => {
               Verified Profiles
             </h3>
             <p style={{ color: "#64748b", lineHeight: "1.6" }}>
-              We verify phone numbers and email addresses for every member of our
-              community. Look for the verification badge on user profiles.
+              We verify phone numbers and email addresses for every member of
+              our community. Look for the verification badge on user profiles.
             </p>
           </div>
         </div>

@@ -3,7 +3,6 @@ import "./Requests.css";
 import anonymousUser from "../../../../assets/svgs/anonymous_user.svg";
 import { currencyOptions } from "../../../../data/currency";
 import { Link, useLocation } from "react-router-dom";
-import { FaCar, FaChair } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { deleteRequest } from "../../../../redux/action";
 import ManageNav from "../components/ManageNav";

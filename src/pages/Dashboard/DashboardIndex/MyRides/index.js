@@ -1,7 +1,7 @@
 import "./MyRides.css";
 import { useSelector } from "react-redux";
 import RideCard from "../../../../components/Card/RideCard";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../../../components/Button/Button";
 
 const MyRides = () => {

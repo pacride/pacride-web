@@ -38,7 +38,7 @@ const Dashboard = () => {
         setLoading(false);
         console.log(err);
       });
-  }, []);
+  }, [dispatch, navigate]);
 
   return (
     <div className="dashboard">

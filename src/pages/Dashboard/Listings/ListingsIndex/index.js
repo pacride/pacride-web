@@ -2,8 +2,8 @@ import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 import "./ListingsIndex.css";
 import PlacesAutoComplete from "../../../../components/Input/PlacesAutoComplete";
 import Button from "../../../../components/Button/Button";
-import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLocation, useOutletContext } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RideCard from "../../../../components/Card/RideCard";
 import { FaLocationCrosshairs, FaLocationDot } from "react-icons/fa6";
@@ -15,10 +15,10 @@ const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 const ListingsIndex = () => {
   const searchLocation = useLocation().search?.split(/[?&]/);
   const [from, setFrom] = useState(
-    searchLocation?.find((el) => el.includes("from"))?.split("=")[1] || ""
+    searchLocation?.find((el) => el.includes("from"))?.split("=")[1] || "",
   );
   const [to, setTo] = useState(
-    searchLocation?.find((el) => el.includes("to"))?.split("=")[1] || ""
+    searchLocation?.find((el) => el.includes("to"))?.split("=")[1] || "",
   );
   const [openOverlay, setOpenOverlay] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -41,7 +41,7 @@ const ListingsIndex = () => {
         })
         .map((ride) => {
           const departureDate = new Date(ride.departure).toLocaleDateString(
-            "en-GB"
+            "en-GB",
           );
           const departureTime = new Date(ride.departure)
             .toLocaleTimeString("en-GB", {
@@ -65,7 +65,7 @@ const ListingsIndex = () => {
               departureTime={departureTime}
             />
           );
-        })
+        }),
     );
   }, [ridesData, filter, search]);
 
@@ -74,7 +74,7 @@ const ListingsIndex = () => {
     libraries: ["places"],
   });
 
-  const getRides = async () => {
+  const getRides = useCallback(async () => {
     if (!from && !to) {
       setLoading(false);
       return;
@@ -82,7 +82,7 @@ const ListingsIndex = () => {
     try {
       setLoading(true);
       const res = await fetch(
-        `${process.env.REACT_APP_SERVER}/rides?from=${from}&to=${to}`
+        `${process.env.REACT_APP_SERVER}/rides?from=${from}&to=${to}`,
       );
       const data = await res.json();
       setLoading(false);
@@ -96,12 +96,12 @@ const ListingsIndex = () => {
       console.error(err.message);
       setLoading(false);
     }
-  };
+  }, [from, to, dispatch]);
 
   useEffect(() => {
     setLoading(true);
     getRides();
-  }, []);
+  }, [getRides]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
