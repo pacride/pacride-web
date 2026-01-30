@@ -42,7 +42,7 @@ const FormPage = () => {
           <Outlet />
         </div>
         <footer className="formpage__footer">
-          <small>Pacride © 2024. All rights reserved.</small>
+          <small>Pacride © {new Date().getFullYear()}. All rights reserved.</small>
         </footer>
       </div>
     </div>

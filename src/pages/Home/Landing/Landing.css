@@ -10,310 +10,420 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
 }
 
+/* =========================================
+   Hero Section
+   ========================================= */
 .landing__title__section {
-  flex: 1;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding-inline: 16px;
-  min-height: calc(100vh - (var(--header-height) * 2));
-}
-
-.landing__title__text {
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.landing__title__text span {
-  color: var(--primary-color);
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  min-height: calc(100vh - var(--header-height));
+  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
 }
 
 .landing__title__container {
+  flex: 1;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 0.5;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.landing__title__text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.landing__title__text span {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
 .landing__title__section form {
   width: 100%;
-  max-width: 500px;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 1rem;
 }
 
-.from__input .custom__input:focus ~ .custom__input__icon {
-  color: var(--secondary-color);
+.landing__title__section
+  form
+  .places__auto__complete
+  .custom__input__container {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
 }
 
-.to__input .custom__input:focus ~ .custom__input__icon {
-  color: var(--primary-color);
+.landing__title__section form .places__auto__complete .custom__input {
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.landing__title__section
+  form
+  .places__auto__complete
+  .custom__input__container:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.1);
+  background-color: white;
 }
 
 .landing__title__image__container {
-  flex: 0.5;
+  flex: 1;
+  max-width: 600px;
   position: relative;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .landing__title__image {
-  object-fit: cover;
-  object-position: top;
-  max-height: calc(100vh - (var(--header-height) * 2) - 10px);
   width: 100%;
-  border-radius: 4px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 0.5s ease;
+}
+
+.landing__title__image:hover {
+  transform: perspective(1000px) rotateY(0deg);
 }
 
 .landing__title__image__container div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(2px);
+  /* Hiding the overlay div as it might block the image */
+  display: none;
+}
+
+/* =========================================
+   Features Section (Replaces About)
+   ========================================= */
+.landing__features__section {
+  padding: 6rem 2rem;
+  background-color: white;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  z-index: 1;
-  background-image: linear-gradient(
-    to bottom,
-    #ffffff00,
-    rgba(255, 255, 255, 0.5)
-  );
 }
 
-@media (max-width: 900px) {
-  .landing__title__image__container {
-    display: none;
-  }
-
-  .landing__title__container {
-    flex: 1;
-  }
-}
-
-.landing__about__section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  margin-top: 50px;
-  min-height: calc(100vh - (var(--header-height) * 2));
-}
-
-.landing__about__container {
-  max-width: 700px;
+.landing__features__container {
+  max-width: 1200px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 4rem;
 }
 
-.landing__about__logo {
-  height: 100px;
-  overflow: hidden;
-}
-
-.landing__about__title {
-  font-size: 1.5rem;
-  font-weight: 600;
+.landing__features__header {
   text-align: center;
-  color: var(--primary-color);
+  max-width: 800px;
 }
 
-.landing__about__text {
-  font-size: 2rem;
-  font-weight: 400;
-  text-align: center;
+.landing__features__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
   margin-bottom: 1rem;
 }
 
-.landing__how__section {
-  flex: 1;
+.landing__features__subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.landing__features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.landing__feature__card {
+  background: #f8f9fa;
+  padding: 2.5rem;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.landing__feature__card:hover {
+  background: white;
+  border-color: rgba(24, 119, 242, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+}
+
+.landing__feature__icon {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
   align-items: center;
-  padding: 16px;
-  margin-top: 50px;
-  background-color: var(--primary-color);
-  min-height: calc(100vh - (var(--header-height) * 2));
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.landing__feature__card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.landing__feature__card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* =========================================
+   How It Works Section
+   ========================================= */
+.landing__how__section {
+  padding: 6rem 2rem;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
 }
 
 .landing__how__container {
-  max-width: 700px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 4rem;
 }
 
 .landing__how__title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
   text-align: center;
   margin-bottom: 1rem;
-  color: #fff;
 }
 
 .landing__how__steps {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  width: 100%;
 }
 
 .landing__how__step {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  text-align: center;
+  position: relative;
+}
+
+/* Connecting lines */
+.landing__how__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--primary-color) 50%,
+    transparent 50%
+  );
+  background-size: 20px 100%;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.landing__how__step__icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 20px rgba(24, 119, 242, 0.2);
+  z-index: 1;
+  position: relative;
 }
 
 .landing__how__step__number {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: rgba(24, 119, 242, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.landing__how__step__title {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
 }
 
 .landing__how__step__text {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #fff;
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 300px;
 }
 
+@media (max-width: 900px) {
+  .landing__how__step:not(:last-child)::after {
+    display: none;
+  }
+}
+
+/* =========================================
+   Contact Section
+   ========================================= */
 .landing__contact__section {
-  flex: 1;
+  padding: 6rem 2rem;
+  background-color: #f8f9fa;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 16px;
-  padding-top: 50px;
-  min-height: calc(100vh - (var(--header-height) * 2));
 }
 
 .landing__contact__container {
-  max-width: 700px;
+  max-width: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .landing__contact__title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
   text-align: center;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
 }
 
 .landing__contact__form {
   width: 100%;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
-.landing__contact__input {
+.landing__contact__input .custom__input,
+.landing__contact__textarea {
   width: 100%;
-  max-width: 500px;
-  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+  font-family: inherit;
 }
 
-.landing__contact__section .custom__input__conatainer {
-  background-color: #fff;
-  border: #000 1px solid;
+.landing__contact__input .custom__input:focus,
+.landing__contact__textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(24, 119, 242, 0.1);
 }
 
 .landing__contact__textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.landing__contact__button {
+  margin-top: 1rem;
   width: 100%;
-  max-width: 500px;
-  height: 200px;
-  margin-bottom: 1rem;
-  border: #000 1px solid;
-  outline: none;
-  padding: 16px;
-  font-weight: 500;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  resize: none;
-}
-
-.landing__footer__section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 16px;
-  background-color: var(--primary-color);
-  min-height: calc(100vh - (var(--header-height) * 2));
+  font-size: 1.1rem;
+  padding: 1rem;
 }
 
-.landing__footer__container {
-  max-width: 700px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+/* =========================================
+   Responsive Design
+   ========================================= */
+@media (max-width: 1024px) {
+  .landing__title__section {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .landing__title__container {
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .landing__title__image {
+    transform: none;
+  }
+
+  .landing__title__image:hover {
+    transform: none;
+  }
 }
 
-.landing__footer__links {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  text-align: center;
-}
+@media (max-width: 768px) {
+  .landing__title__text {
+    font-size: 2.5rem;
+  }
 
-.landing__footer__link {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #fff;
-}
+  .landing__how__steps {
+    grid-template-columns: 1fr;
+  }
 
-.landing__footer__socials {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-
-.landing__footer__social {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #fff;
-}
-
-.landing__footer__social__icon {
-  font-size: 2rem;
-  font-weight: 400;
-  color: #fff;
+  .landing__title__section {
+    padding: 2rem 1rem;
+  }
 }

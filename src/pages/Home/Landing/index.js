@@ -2,20 +2,23 @@ import "./Landing.css";
 import CarScroll from "../../../components/Scroll/CarScroll";
 import { useLoadScript } from "@react-google-maps/api";
 import {
-  FaFacebookF,
-  FaInstagram,
   FaLocationCrosshairs,
   FaLocationDot,
-  FaTwitter,
+  FaCar,
+  FaMessage,
+  FaMapLocationDot,
+  FaShieldHalved,
+  FaLeaf,
+  FaWallet,
 } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import Button from "../../../components/Button/Button";
 import PlacesAutocomplete from "../../../components/Input/PlacesAutoComplete";
 import peopleSharingRide from "../../../assets/images/people_sharing_ride.jpeg";
 import Input from "../../../components/Input/Input";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import logoImage from "../../../assets/svgs/logo.svg";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Footer from "../../../components/Footer/Footer";
 
 const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
@@ -35,10 +38,10 @@ const Landing = () => {
     googleMapsApiKey: MAPS_API_KEY,
     libraries: ["places"],
   });
-  
+
   useEffect(() => {
     document.title = "Pacride";
-    
+
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = "https://queekk-service.vercel.app/assistant.css";
@@ -135,7 +138,9 @@ const Landing = () => {
               setValue={setTo}
               isLoaded={isLoaded}
             />
-            <Button>See available rides</Button>
+            <Button className="landing__hero__button">
+              See available rides
+            </Button>
           </form>
         </div>
         <div className="landing__title__image__container">
@@ -147,15 +152,50 @@ const Landing = () => {
           />
         </div>
       </section>
-      <section className="landing__about__section" ref={aboutSectionRef}>
-        <div className="landing__about__container">
-          <img src={logoImage} alt="logo" className="landing__about__logo" />
-          <h2 className="landing__about__title">About Pacride</h2>
-          <p className="landing__about__text">
-            Pacride is a ride sharing platform that enables passengers going to
-            similar destination to share a ride, thereby reducing the cost of
-            transportation.
-          </p>
+      <section className="landing__features__section" ref={aboutSectionRef}>
+        <div className="landing__features__container">
+          <div className="landing__features__header">
+            <h2 className="landing__features__title">Why Choose Pacride?</h2>
+            <p className="landing__features__subtitle">
+              Experience the future of travel with our community-driven
+              platform.
+            </p>
+          </div>
+
+          <div className="landing__features__grid">
+            <div className="landing__feature__card">
+              <div className="landing__feature__icon">
+                <FaWallet />
+              </div>
+              <h3>Save Money</h3>
+              <p>
+                Cut your travel costs by up to 50% when you share rides with
+                others going your way.
+              </p>
+            </div>
+
+            <div className="landing__feature__card">
+              <div className="landing__feature__icon">
+                <FaLeaf />
+              </div>
+              <h3>Eco-Friendly</h3>
+              <p>
+                Reduce your carbon footprint. Fewer cars on the road means a
+                greener planet for everyone.
+              </p>
+            </div>
+
+            <div className="landing__feature__card">
+              <div className="landing__feature__icon">
+                <FaShieldHalved />
+              </div>
+              <h3>Safe & Secure</h3>
+              <p>
+                Verified profiles and real-time tracking ensure you travel with
+                peace of mind.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
       <section className="landing__how__section">
@@ -163,21 +203,35 @@ const Landing = () => {
           <h2 className="landing__how__title">How it works</h2>
           <div className="landing__how__steps">
             <div className="landing__how__step">
-              <span className="landing__how__step__number">1</span>
+              <div className="landing__how__step__icon">
+                <FaMapLocationDot />
+              </div>
+              <span className="landing__how__step__number">Step 1</span>
+              <h3 className="landing__how__step__title">Search</h3>
               <p className="landing__how__step__text">
-                Enter your location and destination
+                Enter your location and destination to find rides going your
+                way.
               </p>
             </div>
             <div className="landing__how__step">
-              <span className="landing__how__step__number">2</span>
+              <div className="landing__how__step__icon">
+                <FaCar />
+              </div>
+              <span className="landing__how__step__number">Step 2</span>
+              <h3 className="landing__how__step__title">Select</h3>
               <p className="landing__how__step__text">
-                Select a ride from the available rides
+                Choose a ride that fits your schedule and budget from the list.
               </p>
             </div>
             <div className="landing__how__step">
-              <span className="landing__how__step__number">3</span>
+              <div className="landing__how__step__icon">
+                <FaMessage />
+              </div>
+              <span className="landing__how__step__number">Step 3</span>
+              <h3 className="landing__how__step__title">Connect</h3>
               <p className="landing__how__step__text">
-                Contact the lister to book a ride
+                Contact the driver directly to book your seat and arrange
+                details.
               </p>
             </div>
           </div>
@@ -219,29 +273,7 @@ const Landing = () => {
           </form>
         </div>
       </section>
-      <section className="landing__footer__section">
-        <div className="landing__footer__container">
-          <div className="landing__footer__links">
-            <Link to="/" className="landing__footer__link">
-              Privacy Policy
-            </Link>
-            <Link to="/" className="landing__footer__link">
-              Terms and Conditions
-            </Link>
-          </div>
-          <div className="landing__footer__socials">
-            <Link to="/" className="landing__footer__social">
-              <FaFacebookF className="landing__footer__social__icon" />
-            </Link>
-            <Link to="/" className="landing__footer__social">
-              <FaTwitter className="landing__footer__social__icon" />
-            </Link>
-            <Link to="/" className="landing__footer__social">
-              <FaInstagram className="landing__footer__social__icon" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Footer />
       <CarScroll />
     </div>
   );

@@ -21,6 +21,17 @@ import ListingsIndex from "./pages/Dashboard/Listings/ListingsIndex";
 import Contact from "./pages/Dashboard/Contact";
 import Requests from "./pages/Dashboard/Manage/Requests";
 import Passengers from "./pages/Dashboard/Manage/Passengers";
+import InfoPage from "./pages/InfoPage";
+import CareersContent from "./pages/InfoPage/contents/CareersContent";
+import BlogContent from "./pages/InfoPage/contents/BlogContent";
+import BlogDetail from "./pages/InfoPage/BlogDetail";
+import HelpContent from "./pages/InfoPage/contents/HelpContent";
+import SafetyContent from "./pages/InfoPage/contents/SafetyContent";
+import {
+  PrivacyContent,
+  TermsContent,
+  CookiesContent,
+} from "./pages/InfoPage/contents/LegalContent";
 
 function App() {
   return (
@@ -43,6 +54,63 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="about" element={<Landing />} />
             <Route path="contact" element={<Landing />} />
+            <Route
+              path="careers"
+              element={
+                <InfoPage title="Careers">
+                  <CareersContent />
+                </InfoPage>
+              }
+            />
+            <Route
+              path="blog"
+              element={
+                <InfoPage title="Blog">
+                  <BlogContent />
+                </InfoPage>
+              }
+            />
+            <Route path="blog/:id" element={<BlogDetail />} />
+            <Route
+              path="help"
+              element={
+                <InfoPage title="Help Center">
+                  <HelpContent />
+                </InfoPage>
+              }
+            />
+            <Route
+              path="safety"
+              element={
+                <InfoPage title="Safety">
+                  <SafetyContent />
+                </InfoPage>
+              }
+            />
+            <Route
+              path="privacy"
+              element={
+                <InfoPage title="Privacy Policy">
+                  <PrivacyContent />
+                </InfoPage>
+              }
+            />
+            <Route
+              path="terms"
+              element={
+                <InfoPage title="Terms of Service">
+                  <TermsContent />
+                </InfoPage>
+              }
+            />
+            <Route
+              path="cookies"
+              element={
+                <InfoPage title="Cookie Policy">
+                  <CookiesContent />
+                </InfoPage>
+              }
+            />
             <Route path="/" element={<FormPage />}>
               <Route path="signup" element={<Signup />} />
               <Route path="login" element={<Login />} />

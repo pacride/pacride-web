@@ -1,81 +1,212 @@
 .car__scroll {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
-  z-index: 9;
-  background-color: var(--primary-color);
+  height: 80px; /* Increased height for better view */
+  z-index: 1000;
+  background-color: #f0f2f5; /* Light sky color */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-inline: 16px;
-  color: white;
-  gap: 8px;
-  margin-top: auto;
+  justify-content: flex-end; /* Push road to bottom */
+  padding-inline: 0;
+  gap: 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 768px) {
+  .car__scroll {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+  }
 }
 
 body.dark .car__scroll {
-  background-color: black;
+  background-color: #1a1a1a;
+}
+
+/* City Skyline Background */
+.city__skyline {
+  position: absolute;
+  bottom: 30px; /* Above the road */
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-image: linear-gradient(to top, #cbd5e1 0%, #cbd5e1 100%),
+    linear-gradient(to top, #94a3b8 0%, #94a3b8 100%),
+    linear-gradient(to top, #64748b 0%, #64748b 100%);
+  background-position: 10% 100%, 40% 100%, 80% 100%;
+  background-size: 10% 60%, 15% 80%, 8% 50%;
+  background-repeat: repeat-x;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Add some "buildings" using pseudo-elements for more variety */
+.city__skyline::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, #e2e8f0 0%, #e2e8f0 100%),
+    linear-gradient(to top, #cbd5e1 0%, #cbd5e1 100%);
+  background-size: 7% 40%, 12% 70%;
+  background-position: 25% 100%, 60% 100%;
+  background-repeat: repeat-x;
+}
+
+body.dark .city__skyline,
+body.dark .city__skyline::before {
+  filter: brightness(0.3);
 }
 
 .road {
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 2;
+  height: 30px;
+  background-color: #333; /* Asphalt */
 }
 
 .road__left {
   gap: 4px;
+  flex: 1; /* Take up available space */
+  padding-left: 16px; /* Start with some padding */
+  overflow: visible; /* Allow fumes to show */
 }
 
 .road__line {
+  position: absolute;
+  bottom: 14px; /* Center of road height */
+  left: 0;
   width: 100%;
-  height: 0;
-  border: 2px dashed white;
+  height: 2px;
+  background-image: linear-gradient(to right, #fbbf24 50%, transparent 50%);
+  background-size: 20px 100%;
+  z-index: 3;
 }
 
 .road__right {
-  position: relative;
-  flex: 0.5;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  width: 50%; /* Just to cover right side initially */
+  pointer-events: none;
+  z-index: 4; /* Higher than road__line (3) */
+  background-color: transparent; /* Transparent so we see the car/road below */
 }
 
 .road__right .copyright {
   position: absolute;
   font-size: 12px;
-  color: white;
-  opacity: 1;
-  left: 50%;
-  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.9); /* High opacity text */
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   white-space: nowrap;
+  z-index: 20; /* High z-index to stay above line */
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: #333; /* Solid background matching road */
+  padding: 2px 10px;
+  border-radius: 4px;
+  display: inline-block;
 }
 
-body.dark .road__right .copyright {
-  opacity: 0.5;
+.car__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 4;
+  /* No transition here for direct manipulation */
+  will-change: transform; /* Optimize for transform updates */
 }
 
 .car {
   height: 24px;
-  margin-right: auto;
+  width: auto;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+  animation: bounce 1s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
 }
 
 .car__stop__line {
   margin-left: auto;
   min-width: 4px;
-  height: 24px;
+  height: 30px;
   background-color: white;
+  z-index: 3;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .copyright__overlay {
+  display: none; /* Hide overlay as it causes layering issues with car/line */
+}
+
+/* Exhaust Fumes */
+.exhaust__fumes {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary-color);
+  left: -10px;
+  bottom: 5px;
+  width: 20px;
+  height: 10px;
   z-index: 1;
 }
 
-body.dark .copyright__overlay {
-  background-color: black;
+.fume {
+  position: absolute;
+  background-color: rgba(200, 200, 200, 0.6);
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  animation: fume-move 2s infinite linear;
+  opacity: 0;
+}
+
+.fume-1 {
+  animation-delay: 0s;
+  left: 10px;
+}
+
+.fume-2 {
+  animation-delay: 0.4s;
+  left: 8px;
+  width: 5px;
+  height: 5px;
+}
+
+.fume-3 {
+  animation-delay: 0.8s;
+  left: 6px;
+  width: 4px;
+  height: 4px;
+}
+
+@keyframes fume-move {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-30px, -5px) scale(2.5);
+    opacity: 0;
+  }
 }
