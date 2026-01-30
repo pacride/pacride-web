@@ -117,39 +117,66 @@ const Landing = () => {
     <div className="landing">
       <div id="queekk-container" />
       <section className="landing__title__section">
-        <div className="landing__title__container">
+        <div className="landing__hero__content">
           <h1 className="landing__title__text">
-            Share your fare with <span>Pacride</span>
+            Ride Together.
+            <br />
+            <span className="highlight">Save Together.</span>
           </h1>
-          <form onSubmit={handleSubmit}>
-            <PlacesAutocomplete
-              className="from__input"
-              type={"text"}
-              placeholder={"Enter your location"}
-              LeftIcon={FaLocationCrosshairs}
-              setValue={setFrom}
-              isLoaded={isLoaded}
-            />
-            <PlacesAutocomplete
-              className="to__input"
-              type={"text"}
-              placeholder={"Enter your destination"}
-              LeftIcon={FaLocationDot}
-              setValue={setTo}
-              isLoaded={isLoaded}
-            />
-            <Button className="landing__hero__button">
-              See available rides
-            </Button>
+          <p className="landing__hero__subtitle">
+            The most reliable carpooling platform for your daily commute and
+            long-distance travel.
+          </p>
+          <form onSubmit={handleSubmit} className="landing__search__form">
+            <div className="search__group">
+              <label>From</label>
+              <PlacesAutocomplete
+                className="from__input"
+                type={"text"}
+                placeholder={"Leaving from..."}
+                LeftIcon={FaLocationCrosshairs}
+                setValue={setFrom}
+                isLoaded={isLoaded}
+              />
+            </div>
+            <div className="search__divider"></div>
+            <div className="search__group">
+              <label>To</label>
+              <PlacesAutocomplete
+                className="to__input"
+                type={"text"}
+                placeholder={"Going to..."}
+                LeftIcon={FaLocationDot}
+                setValue={setTo}
+                isLoaded={isLoaded}
+              />
+            </div>
+            <Button className="landing__hero__button">Find a Ride</Button>
           </form>
         </div>
-        <div className="landing__title__image__container">
-          <div />
+        <div className="landing__hero__visual">
           <img
             src={peopleSharingRide}
-            alt="people sharing ride"
-            className="landing__title__image"
+            alt="Happy people carpooling"
+            className="landing__hero__image"
           />
+          <div className="hero__decoration__circle"></div>
+          <div className="hero__decoration__dots"></div>
+        </div>
+      </section>
+
+      <section className="landing__stats__section">
+        <div className="stat__item">
+          <h3>10k+</h3>
+          <p>Rides Shared</p>
+        </div>
+        <div className="stat__item">
+          <h3>50+</h3>
+          <p>Cities Covered</p>
+        </div>
+        <div className="stat__item">
+          <h3>100%</h3>
+          <p>Verified Users</p>
         </div>
       </section>
       <section className="landing__features__section" ref={aboutSectionRef}>
@@ -237,6 +264,50 @@ const Landing = () => {
           </div>
         </div>
       </section>
+      <section className="landing__testimonials__section">
+        <h2 className="landing__section__title">What our riders say</h2>
+        <div className="landing__testimonials__grid">
+          <div className="testimonial__card">
+            <p className="testimonial__text">
+              "Pacride transformed my daily commute. I save money and met
+              amazing people!"
+            </p>
+            <div className="testimonial__author">
+              <div className="author__avatar">JD</div>
+              <div className="author__info">
+                <h4>John Doe</h4>
+                <span>Daily Commuter</span>
+              </div>
+            </div>
+          </div>
+          <div className="testimonial__card">
+            <p className="testimonial__text">
+              "Safe, reliable, and eco-friendly. I highly recommend it for
+              inter-city travel."
+            </p>
+            <div className="testimonial__author">
+              <div className="author__avatar">AS</div>
+              <div className="author__info">
+                <h4>Sarah Jenkins</h4>
+                <span>Travel Enthusiast</span>
+              </div>
+            </div>
+          </div>
+          <div className="testimonial__card">
+            <p className="testimonial__text">
+              "The best way to travel. It's not just a ride, it's a community."
+            </p>
+            <div className="testimonial__author">
+              <div className="author__avatar">MK</div>
+              <div className="author__info">
+                <h4>Mike Kelly</h4>
+                <span>Student</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="landing__contact__section" ref={contactSectionRef}>
         <div className="landing__contact__container">
           <h2 className="landing__contact__title">Contact us</h2>
