@@ -117,6 +117,10 @@ const Landing = () => {
     <div className="landing">
       <div id="queekk-container" />
       <section className="landing__title__section">
+        <div className="landing__hero__background">
+          <div className="hero__decoration__circle"></div>
+          <div className="hero__decoration__dots"></div>
+        </div>
         <div className="landing__hero__content">
           <h1 className="landing__title__text">
             Ride Together.
@@ -151,9 +155,7 @@ const Landing = () => {
                 />
               </div>
             </div>
-            <Button className="landing__hero__button">
-              Search
-            </Button>
+            <Button className="landing__hero__button">Search</Button>
           </form>
         </div>
         <div className="landing__hero__visual">
@@ -162,8 +164,6 @@ const Landing = () => {
             alt="Happy people carpooling"
             className="landing__hero__image"
           />
-          <div className="hero__decoration__circle"></div>
-          <div className="hero__decoration__dots"></div>
         </div>
       </section>
 

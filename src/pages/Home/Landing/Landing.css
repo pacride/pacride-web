@@ -8,9 +8,12 @@
   --text-light: #8a8a8a;
   --bg-light: #f9fafb;
   --white: #ffffff;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    0 10px 10px -5px rgba(0, 0, 0, 0.02);
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   --radius-full: 9999px;
@@ -31,7 +34,7 @@
   width: 100%;
   overflow-x: hidden;
   background-color: var(--white);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 /* =========================================
@@ -44,10 +47,25 @@
   gap: 4rem;
   padding: 6rem 5%;
   min-height: 90vh;
-  background: radial-gradient(circle at top right, var(--primary-light) 0%, rgba(255,255,255,0) 40%),
-              radial-gradient(circle at bottom left, #f0f9ff 0%, rgba(255,255,255,0) 40%);
+  background: radial-gradient(
+      circle at top right,
+      var(--primary-light) 0%,
+      rgba(255, 255, 255, 0) 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      #f0f9ff 0%,
+      rgba(255, 255, 255, 0) 40%
+    );
   position: relative;
+}
+
+.landing__hero__background {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .landing__hero__content {
@@ -66,7 +84,11 @@
 }
 
 .landing__title__text span.highlight {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -89,7 +111,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 10;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -119,15 +141,26 @@
 }
 
 /* Overriding PlacesAutocomplete internal styles */
+.landing__search__form .places__auto__complete {
+  margin-bottom: 0;
+  width: 100%;
+}
+
 .landing__search__form .places__auto__complete .custom__input__container {
   border: none;
   background-color: transparent;
   border-radius: 0;
   padding: 0.8rem 1rem;
   transition: none;
+  height: auto;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
 }
 
-.landing__search__form .places__auto__complete .custom__input__container:focus-within {
+.landing__search__form
+  .places__auto__complete
+  .custom__input__container:focus-within {
   box-shadow: none;
   background-color: transparent;
 }
@@ -160,7 +193,11 @@
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
   box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
   color: white;
   border: none;
@@ -370,7 +407,7 @@
 
 /* Connecting Line */
 .landing__how__steps::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 40px;
   left: 100px;
@@ -578,15 +615,15 @@
     text-align: center;
     padding-top: 4rem;
   }
-  
+
   .landing__hero__content {
     align-items: center;
   }
-  
+
   .landing__hero__subtitle {
     margin: 0 auto 2.5rem;
   }
-  
+
   .landing__search__form {
     flex-direction: column;
     padding: 1.5rem;
@@ -619,12 +656,12 @@
   .landing__hero__button {
     width: 100%;
   }
-  
+
   .landing__how__steps {
     flex-direction: column;
     gap: 4rem;
   }
-  
+
   .landing__how__steps::before {
     display: none;
   }
@@ -634,12 +671,12 @@
   .landing__title__text {
     font-size: 2.5rem;
   }
-  
+
   .landing__stats__section {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .landing__contact__container {
     padding: 2rem;
   }
