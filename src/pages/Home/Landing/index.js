@@ -128,30 +128,32 @@ const Landing = () => {
             long-distance travel.
           </p>
           <form onSubmit={handleSubmit} className="landing__search__form">
-            <div className="search__inputs__wrapper">
-              <div className="search__input__group">
+            <div className="search__inputs">
+              <div className="search__group">
                 <PlacesAutocomplete
-                  className="search__input__from"
+                  className="from__input"
                   type={"text"}
-                  placeholder={"Leaving from..."}
+                  placeholder={"Leaving from"}
                   LeftIcon={FaLocationCrosshairs}
                   setValue={setFrom}
                   isLoaded={isLoaded}
                 />
               </div>
               <div className="search__divider"></div>
-              <div className="search__input__group">
+              <div className="search__group">
                 <PlacesAutocomplete
-                  className="search__input__to"
+                  className="to__input"
                   type={"text"}
-                  placeholder={"Going to..."}
+                  placeholder={"Going to"}
                   LeftIcon={FaLocationDot}
                   setValue={setTo}
                   isLoaded={isLoaded}
                 />
               </div>
             </div>
-            <Button className="landing__hero__button">Find a Ride</Button>
+            <Button className="landing__hero__button">
+              Search
+            </Button>
           </form>
         </div>
         <div className="landing__hero__visual">
